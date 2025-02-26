@@ -3,6 +3,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
+from tqdm import tqdm
 
 # Define constants
 SEQ_LEN = 288  # 24 hours at 5-minute intervals (24 * 60 / 5)
@@ -35,9 +36,10 @@ def preprocess_data(file_path):
     val_ids, test_ids = train_test_split(temp_ids, train_size=VAL_RATIO / (VAL_RATIO + TEST_RATIO), random_state=42)
 
     # Helper function to create sequences for a set of patient IDs
-    def create_sequences_for_ids(ids):
+    def create_sequences_for_ids(ids, df):
         data_list = []
-        for patient_id in ids:
+        # Add progress bar for patient processing
+        for patient_id in tqdm(ids, desc='Processing patients'):
             group = df[df['id'] == patient_id]
             data = group[['glucose', 'basal', 'bolus', 'carbs']].values
             
@@ -59,9 +61,9 @@ def preprocess_data(file_path):
         return data_list
 
     # Create datasets for each split
-    train_data = create_sequences_for_ids(train_ids)
-    val_data = create_sequences_for_ids(val_ids)
-    test_data = create_sequences_for_ids(test_ids)
+    train_data = create_sequences_for_ids(train_ids, df)
+    val_data = create_sequences_for_ids(val_ids, df)
+    test_data = create_sequences_for_ids(test_ids, df)
 
     return GlucoseDataset(train_data), GlucoseDataset(val_data), GlucoseDataset(test_data)
 
