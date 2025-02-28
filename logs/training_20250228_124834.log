@@ -112,3 +112,52 @@ Epoch 3 average training loss: 0.6422
 2025-02-28 14:12:13,966 - INFO - bolus shape: torch.Size([256, 48, 1])
 2025-02-28 14:12:13,966 - INFO - carbs shape: torch.Size([256, 48, 1])
 2025-02-28 14:12:13,966 - INFO - target shape: torch.Size([256])
+2025-02-28 14:16:06,199 - INFO - 
+Epoch 4 average training loss: 0.6319
+2025-02-28 14:16:35,256 - INFO - New best model with validation loss: 0.6494
+2025-02-28 14:16:35,256 - INFO - Validation Metrics:
+2025-02-28 14:16:35,256 - INFO -   rmse: 0.8058
+2025-02-28 14:16:35,256 - INFO -   mae: 0.5962
+2025-02-28 14:16:35,256 - INFO -   mape: 194.6817
+2025-02-28 14:16:35,256 - INFO -   bias: 0.0146
+2025-02-28 14:16:35,256 - INFO -   large_errors_%: 6.7174
+2025-02-28 14:16:35,286 - INFO - Saved new best model with validation loss: 0.6494
+2025-02-28 14:16:35,300 - INFO - Epoch 4/50
+  Train Loss: 0.6319
+  Val Loss: 0.6494
+  RMSE: 0.8058
+  MAE: 0.5962
+  MAPE: 194.68%
+  Prediction Bias: 0.0146
+  Large Errors: 6.7% - Best Model!
+2025-02-28 14:16:35,341 - INFO - First batch loaded successfully
+2025-02-28 14:16:35,341 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:16:35,341 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:16:35,341 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:16:35,341 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:16:35,341 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:16:35,341 - INFO - target shape: torch.Size([256])
+2025-02-28 14:17:51,660 - INFO - 
+Epoch 5 average training loss: 0.6253
+2025-02-28 14:17:57,659 - INFO - Epoch 5/50
+  Train Loss: 0.6253
+  Val Loss: 0.6541
+  RMSE: 0.8088
+  MAE: 0.5948
+  MAPE: 196.46%
+  Prediction Bias: -0.0336
+  Large Errors: 6.8%
+2025-02-28 14:17:57,659 - INFO - Early stopping triggered after 5 epochs
+2025-02-28 14:17:57,659 - INFO - 
+Training complete!
+2025-02-28 14:17:57,659 - INFO - Models saved in: models/run_20250228_124834
+2025-02-28 14:17:57,659 - INFO - 
+Best Model Metrics:
+2025-02-28 14:17:57,659 - INFO -   rmse: 0.8058
+2025-02-28 14:17:57,659 - INFO -   mae: 0.5962
+2025-02-28 14:17:57,659 - INFO -   mape: 194.6817
+2025-02-28 14:17:57,659 - INFO -   bias: 0.0146
+2025-02-28 14:17:57,659 - INFO -   large_errors_%: 6.7174
+2025-02-28 14:17:57,956 - INFO - 
+Evaluating model...
+2025-02-28 14:19:41,272 - INFO - Training and evaluation complete!
