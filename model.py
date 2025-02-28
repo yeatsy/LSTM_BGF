@@ -29,58 +29,44 @@ def get_device():
         return torch.device("cpu")
 
 class GlucoseLSTM(nn.Module):
-    def __init__(self, input_size=4, hidden_size=64, dropout1_rate=0.3, dropout2_rate=0.2):
+    def __init__(self, hidden_size=48, dropout1_rate=0.2, dropout2_rate=0.1):
         super(GlucoseLSTM, self).__init__()
         
-        # Single LSTM layer with strong regularization
-        self.lstm = nn.LSTM(
-            input_size=input_size,
+        # LSTM for glucose sequence
+        self.lstm_glucose = nn.LSTM(
+            input_size=1,
             hidden_size=hidden_size,
-            num_layers=1,
-            batch_first=True,
-            dropout=0.0  # No dropout between LSTM layers since we only have one
+            num_layers=2,
+            dropout=dropout1_rate,
+            batch_first=True
         )
         
-        self.norm = nn.LayerNorm(hidden_size)
-        
-        # Multiple dropout layers with different rates
-        self.dropout1 = nn.Dropout(dropout1_rate)
-        self.dropout2 = nn.Dropout(dropout2_rate)
-        
-        # Simpler fully connected layers
-        self.fc = nn.Linear(hidden_size, 1)
+        # Linear layers for prediction
+        self.fc1 = nn.Linear(hidden_size + 3, hidden_size)
+        self.dropout = nn.Dropout(dropout2_rate)
+        self.fc2 = nn.Linear(hidden_size, 12)  # Output 12 values for 1-hour prediction
     
-    def forward(self, x):
-        # Pre-allocate tensor for concatenation
-        device = x['glucose'].device
-        batch_size = x['glucose'].shape[0]
-        seq_len = x['glucose'].shape[1]
-        combined_input = torch.empty(
-            (batch_size, seq_len, 4), 
-            device=device, 
-            dtype=torch.float32
-        )
+    def forward(self, inputs):
+        # Process glucose sequence
+        glucose_seq = inputs['glucose']
+        lstm_out, _ = self.lstm_glucose(glucose_seq)
+        lstm_last = lstm_out[:, -1, :]
         
-        # Faster concatenation
-        combined_input[:, :, 0] = x['glucose'].squeeze(-1)
-        combined_input[:, :, 1] = x['basal'].squeeze(-1)
-        combined_input[:, :, 2] = x['bolus'].squeeze(-1)
-        combined_input[:, :, 3] = x['carbs'].squeeze(-1)
+        # Get other features
+        basal = inputs['basal'][:, -1:, 0]
+        bolus = inputs['bolus'][:, -1:, 0]
+        carbs = inputs['carbs'][:, -1:, 0]
         
-        # Apply first dropout to input
-        combined_input = self.dropout1(combined_input)
+        # Combine features
+        combined = torch.cat([lstm_last, basal, bolus, carbs], dim=1)
         
-        # LSTM layer
-        lstm_out, _ = self.lstm(combined_input)
-        last_output = lstm_out[:, -1, :]
+        # Make predictions for next 12 time steps
+        x = self.fc1(combined)
+        x = torch.relu(x)
+        x = self.dropout(x)
+        output = self.fc2(x)  # Shape: [batch_size, 12]
         
-        # Normalization and second dropout
-        normalized = self.norm(last_output)
-        dropped = self.dropout2(normalized)
-        
-        # Direct linear projection
-        out = self.fc(dropped)
-        return out
+        return output
 
 # Setup logging
 def setup_logging(log_dir="logs"):
@@ -188,7 +174,7 @@ def validate_model(model, val_loader, criterion, device):
         for batch in val_loader:
             batch = {k: v.to(device, dtype=torch.float32) for k, v in batch.items()}
             outputs = model(batch)
-            target = batch['target'].view(-1, 1)
+            target = batch['target'].view(-1, 12)
             
             # Calculate MSE loss
             loss = criterion(outputs, target)
@@ -359,7 +345,7 @@ def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.
                     optimizer.zero_grad(set_to_none=True)
                     
                     outputs = model(batch)
-                    target = batch['target'].view(-1, 1)
+                    target = batch['target'].view(-1, 12)
                     batch_loss = criterion(outputs, target)
                     
                     # Debug loss calculation
@@ -454,7 +440,7 @@ def evaluate_model(model, test_loader):
             batch = {k: v.to(device, dtype=torch.float32) for k, v in batch.items()}
             outputs = model(batch)
             # Reshape target to match output dimensions
-            target = batch['target'].view(-1, 1)
+            target = batch['target'].view(-1, 12)
             predictions.extend(outputs.cpu().numpy())
             actuals.extend(target.cpu().numpy())
     

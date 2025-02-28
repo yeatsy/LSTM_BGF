@@ -1,0 +1,9 @@
+2025-02-28 17:07:17,495 - INFO - Starting model evaluation...
+2025-02-28 17:07:17,495 - INFO - Loading data from full_patient_dataset.csv
+2025-02-28 17:07:25,086 - INFO - Dataset sizes:
+2025-02-28 17:07:25,086 - INFO -   Training samples: 732226
+2025-02-28 17:07:25,086 - INFO -   Validation samples: 156905
+2025-02-28 17:07:25,086 - INFO -   Test samples: 156907
+2025-02-28 17:07:25,155 - ERROR - Error loading model: Error(s) in loading state_dict for OriginalGlucoseLSTM:
+	size mismatch for fc.weight: copying a param with shape torch.Size([1, 48]) from checkpoint, the shape in current model is torch.Size([12, 48]).
+	size mismatch for fc.bias: copying a param with shape torch.Size([1]) from checkpoint, the shape in current model is torch.Size([12]).

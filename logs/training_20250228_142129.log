@@ -138,3 +138,758 @@ Epoch 6 average training loss: 0.6199
 2025-02-28 14:26:45,003 - INFO - bolus shape: torch.Size([256, 48, 1])
 2025-02-28 14:26:45,003 - INFO - carbs shape: torch.Size([256, 48, 1])
 2025-02-28 14:26:45,003 - INFO - target shape: torch.Size([256])
+2025-02-28 14:27:29,334 - INFO - 
+Epoch 7 average training loss: 0.6174
+2025-02-28 14:27:35,416 - INFO - Epoch 7/50
+  Train Loss: 0.6174
+  Val Loss: 0.6440
+  RMSE: 0.8025
+  In-Range Accuracy: 3.8%
+  Trend Accuracy: 46.9%
+  High Glucose MAE: 0.9299
+  Low Glucose MAE: 0.7807
+2025-02-28 14:27:35,442 - INFO - First batch loaded successfully
+2025-02-28 14:27:35,442 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:27:35,442 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:27:35,442 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:27:35,442 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:27:35,442 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:27:35,443 - INFO - target shape: torch.Size([256])
+2025-02-28 14:28:19,793 - INFO - 
+Epoch 8 average training loss: 0.6141
+2025-02-28 14:28:25,725 - INFO - Epoch 8/50
+  Train Loss: 0.6141
+  Val Loss: 0.6602
+  RMSE: 0.8126
+  In-Range Accuracy: 3.4%
+  Trend Accuracy: 46.5%
+  High Glucose MAE: 0.9737
+  Low Glucose MAE: 0.7408
+2025-02-28 14:28:25,771 - INFO - First batch loaded successfully
+2025-02-28 14:28:25,771 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:28:25,771 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:28:25,771 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:28:25,771 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:28:25,771 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:28:25,771 - INFO - target shape: torch.Size([256])
+2025-02-28 14:29:10,082 - INFO - 
+Epoch 9 average training loss: 0.6114
+2025-02-28 14:29:16,398 - INFO - Epoch 9/50
+  Train Loss: 0.6114
+  Val Loss: 0.6501
+  RMSE: 0.8063
+  In-Range Accuracy: 4.1%
+  Trend Accuracy: 46.4%
+  High Glucose MAE: 0.9191
+  Low Glucose MAE: 0.7815
+2025-02-28 14:29:16,436 - INFO - First batch loaded successfully
+2025-02-28 14:29:16,437 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:29:16,437 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:29:16,437 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:29:16,437 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:29:16,437 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:29:16,437 - INFO - target shape: torch.Size([256])
+2025-02-28 14:30:02,312 - INFO - 
+Epoch 10 average training loss: 0.6088
+2025-02-28 14:30:08,114 - INFO - Epoch 10/50
+  Train Loss: 0.6088
+  Val Loss: 0.6511
+  RMSE: 0.8069
+  In-Range Accuracy: 4.5%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.8760
+  Low Glucose MAE: 0.7974
+2025-02-28 14:30:08,142 - INFO - First batch loaded successfully
+2025-02-28 14:30:08,142 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:30:08,142 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:30:08,142 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:30:08,142 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:30:08,142 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:30:08,142 - INFO - target shape: torch.Size([256])
+2025-02-28 14:30:52,584 - INFO - 
+Epoch 11 average training loss: 0.6075
+2025-02-28 14:30:59,751 - INFO - Epoch 11/50
+  Train Loss: 0.6075
+  Val Loss: 0.6580
+  RMSE: 0.8112
+  In-Range Accuracy: 4.6%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.8711
+  Low Glucose MAE: 0.8064
+2025-02-28 14:30:59,778 - INFO - First batch loaded successfully
+2025-02-28 14:30:59,778 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:30:59,778 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:30:59,778 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:30:59,778 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:30:59,778 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:30:59,778 - INFO - target shape: torch.Size([256])
+2025-02-28 14:31:46,258 - INFO - 
+Epoch 12 average training loss: 0.6058
+2025-02-28 14:31:52,812 - INFO - Epoch 12/50
+  Train Loss: 0.6058
+  Val Loss: 0.6474
+  RMSE: 0.8046
+  In-Range Accuracy: 4.3%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.9003
+  Low Glucose MAE: 0.7920
+2025-02-28 14:31:52,836 - INFO - First batch loaded successfully
+2025-02-28 14:31:52,836 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:31:52,836 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:31:52,836 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:31:52,836 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:31:52,836 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:31:52,836 - INFO - target shape: torch.Size([256])
+2025-02-28 14:32:37,002 - INFO - 
+Epoch 13 average training loss: 0.6050
+2025-02-28 14:32:43,123 - INFO - Epoch 13/50
+  Train Loss: 0.6050
+  Val Loss: 0.6534
+  RMSE: 0.8083
+  In-Range Accuracy: 3.6%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9526
+  Low Glucose MAE: 0.7682
+2025-02-28 14:32:43,147 - INFO - First batch loaded successfully
+2025-02-28 14:32:43,148 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:32:43,148 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:32:43,148 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:32:43,148 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:32:43,148 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:32:43,148 - INFO - target shape: torch.Size([256])
+2025-02-28 14:33:26,012 - INFO - 
+Epoch 14 average training loss: 0.6024
+2025-02-28 14:33:32,102 - INFO - Epoch 14/50
+  Train Loss: 0.6024
+  Val Loss: 0.6549
+  RMSE: 0.8092
+  In-Range Accuracy: 4.5%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.8762
+  Low Glucose MAE: 0.8258
+2025-02-28 14:33:32,128 - INFO - First batch loaded successfully
+2025-02-28 14:33:32,128 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:33:32,128 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:33:32,128 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:33:32,128 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:33:32,128 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:33:32,128 - INFO - target shape: torch.Size([256])
+2025-02-28 14:34:20,668 - INFO - 
+Epoch 15 average training loss: 0.6013
+2025-02-28 14:34:27,779 - INFO - Epoch 15/50
+  Train Loss: 0.6013
+  Val Loss: 0.6545
+  RMSE: 0.8090
+  In-Range Accuracy: 3.7%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9458
+  Low Glucose MAE: 0.7713
+2025-02-28 14:34:27,804 - INFO - First batch loaded successfully
+2025-02-28 14:34:27,805 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:34:27,805 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:34:27,805 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:34:27,805 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:34:27,805 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:34:27,805 - INFO - target shape: torch.Size([256])
+2025-02-28 14:35:17,839 - INFO - 
+Epoch 16 average training loss: 0.5996
+2025-02-28 14:35:24,253 - INFO - Epoch 16/50
+  Train Loss: 0.5996
+  Val Loss: 0.6611
+  RMSE: 0.8131
+  In-Range Accuracy: 3.6%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9476
+  Low Glucose MAE: 0.7712
+2025-02-28 14:35:24,279 - INFO - First batch loaded successfully
+2025-02-28 14:35:24,279 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:35:24,279 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:35:24,279 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:35:24,279 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:35:24,279 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:35:24,280 - INFO - target shape: torch.Size([256])
+2025-02-28 14:36:14,417 - INFO - 
+Epoch 17 average training loss: 0.5992
+2025-02-28 14:36:21,042 - INFO - Epoch 17/50
+  Train Loss: 0.5992
+  Val Loss: 0.6520
+  RMSE: 0.8075
+  In-Range Accuracy: 4.1%
+  Trend Accuracy: 46.8%
+  High Glucose MAE: 0.9101
+  Low Glucose MAE: 0.7931
+2025-02-28 14:36:21,069 - INFO - First batch loaded successfully
+2025-02-28 14:36:21,069 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:36:21,069 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:36:21,069 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:36:21,069 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:36:21,069 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:36:21,069 - INFO - target shape: torch.Size([256])
+2025-02-28 14:37:11,067 - INFO - 
+Epoch 18 average training loss: 0.5975
+2025-02-28 14:37:17,320 - INFO - Epoch 18/50
+  Train Loss: 0.5975
+  Val Loss: 0.6592
+  RMSE: 0.8119
+  In-Range Accuracy: 4.5%
+  Trend Accuracy: 46.4%
+  High Glucose MAE: 0.9005
+  Low Glucose MAE: 0.7752
+2025-02-28 14:37:17,347 - INFO - First batch loaded successfully
+2025-02-28 14:37:17,347 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:37:17,347 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:37:17,347 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:37:17,347 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:37:17,347 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:37:17,347 - INFO - target shape: torch.Size([256])
+2025-02-28 14:38:05,812 - INFO - 
+Epoch 19 average training loss: 0.5968
+2025-02-28 14:38:11,552 - INFO - Epoch 19/50
+  Train Loss: 0.5968
+  Val Loss: 0.6570
+  RMSE: 0.8106
+  In-Range Accuracy: 4.1%
+  Trend Accuracy: 46.5%
+  High Glucose MAE: 0.9313
+  Low Glucose MAE: 0.7713
+2025-02-28 14:38:11,576 - INFO - First batch loaded successfully
+2025-02-28 14:38:11,576 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:38:11,576 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:38:11,576 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:38:11,576 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:38:11,576 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:38:11,576 - INFO - target shape: torch.Size([256])
+2025-02-28 14:39:02,184 - INFO - 
+Epoch 20 average training loss: 0.5961
+2025-02-28 14:39:08,357 - INFO - Epoch 20/50
+  Train Loss: 0.5961
+  Val Loss: 0.6523
+  RMSE: 0.8077
+  In-Range Accuracy: 4.4%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.8861
+  Low Glucose MAE: 0.8047
+2025-02-28 14:39:08,382 - INFO - First batch loaded successfully
+2025-02-28 14:39:08,382 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:39:08,382 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:39:08,382 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:39:08,382 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:39:08,382 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:39:08,382 - INFO - target shape: torch.Size([256])
+2025-02-28 14:39:59,519 - INFO - 
+Epoch 21 average training loss: 0.5952
+2025-02-28 14:40:05,534 - INFO - Epoch 21/50
+  Train Loss: 0.5952
+  Val Loss: 0.6555
+  RMSE: 0.8096
+  In-Range Accuracy: 4.3%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.9010
+  Low Glucose MAE: 0.7848
+2025-02-28 14:40:05,560 - INFO - First batch loaded successfully
+2025-02-28 14:40:05,560 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:40:05,560 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:40:05,560 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:40:05,560 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:40:05,560 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:40:05,560 - INFO - target shape: torch.Size([256])
+2025-02-28 14:40:54,010 - INFO - 
+Epoch 22 average training loss: 0.5938
+2025-02-28 14:40:59,838 - INFO - Epoch 22/50
+  Train Loss: 0.5938
+  Val Loss: 0.6535
+  RMSE: 0.8084
+  In-Range Accuracy: 4.2%
+  Trend Accuracy: 46.8%
+  High Glucose MAE: 0.9246
+  Low Glucose MAE: 0.7726
+2025-02-28 14:40:59,863 - INFO - First batch loaded successfully
+2025-02-28 14:40:59,863 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:40:59,864 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:40:59,864 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:40:59,864 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:40:59,864 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:40:59,864 - INFO - target shape: torch.Size([256])
+2025-02-28 14:42:02,743 - INFO - 
+Epoch 23 average training loss: 0.5929
+2025-02-28 14:42:09,013 - INFO - Epoch 23/50
+  Train Loss: 0.5929
+  Val Loss: 0.6609
+  RMSE: 0.8130
+  In-Range Accuracy: 3.6%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.9509
+  Low Glucose MAE: 0.7640
+2025-02-28 14:42:09,041 - INFO - First batch loaded successfully
+2025-02-28 14:42:09,041 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:42:09,041 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:42:09,041 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:42:09,041 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:42:09,041 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:42:09,041 - INFO - target shape: torch.Size([256])
+2025-02-28 14:42:59,030 - INFO - 
+Epoch 24 average training loss: 0.5922
+2025-02-28 14:43:06,116 - INFO - Epoch 24/50
+  Train Loss: 0.5922
+  Val Loss: 0.6541
+  RMSE: 0.8088
+  In-Range Accuracy: 4.4%
+  Trend Accuracy: 46.9%
+  High Glucose MAE: 0.9019
+  Low Glucose MAE: 0.7769
+2025-02-28 14:43:06,145 - INFO - First batch loaded successfully
+2025-02-28 14:43:06,145 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:43:06,145 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:43:06,145 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:43:06,145 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:43:06,145 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:43:06,145 - INFO - target shape: torch.Size([256])
+2025-02-28 14:43:57,299 - INFO - 
+Epoch 25 average training loss: 0.5914
+2025-02-28 14:44:03,994 - INFO - Epoch 25/50
+  Train Loss: 0.5914
+  Val Loss: 0.6610
+  RMSE: 0.8130
+  In-Range Accuracy: 3.9%
+  Trend Accuracy: 46.8%
+  High Glucose MAE: 0.9196
+  Low Glucose MAE: 0.8099
+2025-02-28 14:44:04,022 - INFO - First batch loaded successfully
+2025-02-28 14:44:04,022 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:44:04,022 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:44:04,022 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:44:04,022 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:44:04,022 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:44:04,022 - INFO - target shape: torch.Size([256])
+2025-02-28 14:44:56,305 - INFO - 
+Epoch 26 average training loss: 0.5900
+2025-02-28 14:45:03,206 - INFO - Epoch 26/50
+  Train Loss: 0.5900
+  Val Loss: 0.6652
+  RMSE: 0.8156
+  In-Range Accuracy: 3.9%
+  Trend Accuracy: 46.9%
+  High Glucose MAE: 0.9342
+  Low Glucose MAE: 0.7613
+2025-02-28 14:45:03,231 - INFO - First batch loaded successfully
+2025-02-28 14:45:03,231 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:45:03,231 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:45:03,231 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:45:03,231 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:45:03,231 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:45:03,231 - INFO - target shape: torch.Size([256])
+2025-02-28 14:45:57,270 - INFO - 
+Epoch 27 average training loss: 0.5904
+2025-02-28 14:46:04,522 - INFO - Epoch 27/50
+  Train Loss: 0.5904
+  Val Loss: 0.6478
+  RMSE: 0.8049
+  In-Range Accuracy: 4.2%
+  Trend Accuracy: 46.8%
+  High Glucose MAE: 0.9088
+  Low Glucose MAE: 0.7805
+2025-02-28 14:46:04,550 - INFO - First batch loaded successfully
+2025-02-28 14:46:04,550 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:46:04,550 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:46:04,550 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:46:04,550 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:46:04,550 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:46:04,550 - INFO - target shape: torch.Size([256])
+2025-02-28 14:46:56,472 - INFO - 
+Epoch 28 average training loss: 0.5891
+2025-02-28 14:47:03,135 - INFO - Epoch 28/50
+  Train Loss: 0.5891
+  Val Loss: 0.6573
+  RMSE: 0.8107
+  In-Range Accuracy: 4.0%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9164
+  Low Glucose MAE: 0.8095
+2025-02-28 14:47:03,162 - INFO - First batch loaded successfully
+2025-02-28 14:47:03,162 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:47:03,162 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:47:03,162 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:47:03,162 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:47:03,162 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:47:03,162 - INFO - target shape: torch.Size([256])
+2025-02-28 14:47:53,811 - INFO - 
+Epoch 29 average training loss: 0.5888
+2025-02-28 14:48:00,184 - INFO - Epoch 29/50
+  Train Loss: 0.5888
+  Val Loss: 0.6547
+  RMSE: 0.8091
+  In-Range Accuracy: 4.0%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.9133
+  Low Glucose MAE: 0.8048
+2025-02-28 14:48:00,210 - INFO - First batch loaded successfully
+2025-02-28 14:48:00,210 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:48:00,210 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:48:00,210 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:48:00,210 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:48:00,210 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:48:00,210 - INFO - target shape: torch.Size([256])
+2025-02-28 14:48:52,076 - INFO - 
+Epoch 30 average training loss: 0.5877
+2025-02-28 14:48:58,014 - INFO - Epoch 30/50
+  Train Loss: 0.5877
+  Val Loss: 0.6537
+  RMSE: 0.8085
+  In-Range Accuracy: 4.1%
+  Trend Accuracy: 46.9%
+  High Glucose MAE: 0.9010
+  Low Glucose MAE: 0.8051
+2025-02-28 14:48:58,040 - INFO - First batch loaded successfully
+2025-02-28 14:48:58,040 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:48:58,040 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:48:58,040 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:48:58,040 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:48:58,040 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:48:58,040 - INFO - target shape: torch.Size([256])
+2025-02-28 14:49:49,114 - INFO - 
+Epoch 31 average training loss: 0.5879
+2025-02-28 14:49:55,468 - INFO - Epoch 31/50
+  Train Loss: 0.5879
+  Val Loss: 0.6529
+  RMSE: 0.8080
+  In-Range Accuracy: 3.5%
+  Trend Accuracy: 46.9%
+  High Glucose MAE: 0.9586
+  Low Glucose MAE: 0.7537
+2025-02-28 14:49:55,494 - INFO - First batch loaded successfully
+2025-02-28 14:49:55,495 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:49:55,495 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:49:55,495 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:49:55,495 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:49:55,495 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:49:55,495 - INFO - target shape: torch.Size([256])
+2025-02-28 14:50:45,343 - INFO - 
+Epoch 32 average training loss: 0.5867
+2025-02-28 14:50:51,693 - INFO - Epoch 32/50
+  Train Loss: 0.5867
+  Val Loss: 0.6528
+  RMSE: 0.8079
+  In-Range Accuracy: 4.2%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9139
+  Low Glucose MAE: 0.7591
+2025-02-28 14:50:51,719 - INFO - First batch loaded successfully
+2025-02-28 14:50:51,720 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:50:51,720 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:50:51,720 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:50:51,720 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:50:51,720 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:50:51,720 - INFO - target shape: torch.Size([256])
+2025-02-28 14:51:41,696 - INFO - 
+Epoch 33 average training loss: 0.5862
+2025-02-28 14:51:48,131 - INFO - Epoch 33/50
+  Train Loss: 0.5862
+  Val Loss: 0.6616
+  RMSE: 0.8134
+  In-Range Accuracy: 3.9%
+  Trend Accuracy: 46.8%
+  High Glucose MAE: 0.9185
+  Low Glucose MAE: 0.8249
+2025-02-28 14:51:48,156 - INFO - First batch loaded successfully
+2025-02-28 14:51:48,156 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:51:48,156 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:51:48,157 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:51:48,157 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:51:48,157 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:51:48,157 - INFO - target shape: torch.Size([256])
+2025-02-28 14:52:38,036 - INFO - 
+Epoch 34 average training loss: 0.5866
+2025-02-28 14:52:44,202 - INFO - Epoch 34/50
+  Train Loss: 0.5866
+  Val Loss: 0.6586
+  RMSE: 0.8116
+  In-Range Accuracy: 3.9%
+  Trend Accuracy: 46.8%
+  High Glucose MAE: 0.9369
+  Low Glucose MAE: 0.7667
+2025-02-28 14:52:44,227 - INFO - First batch loaded successfully
+2025-02-28 14:52:44,227 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:52:44,228 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:52:44,228 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:52:44,228 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:52:44,228 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:52:44,228 - INFO - target shape: torch.Size([256])
+2025-02-28 14:53:35,409 - INFO - 
+Epoch 35 average training loss: 0.5857
+2025-02-28 14:53:41,493 - INFO - Epoch 35/50
+  Train Loss: 0.5857
+  Val Loss: 0.6553
+  RMSE: 0.8095
+  In-Range Accuracy: 3.8%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.9562
+  Low Glucose MAE: 0.7432
+2025-02-28 14:53:41,520 - INFO - First batch loaded successfully
+2025-02-28 14:53:41,520 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:53:41,520 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:53:41,520 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:53:41,520 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:53:41,520 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:53:41,520 - INFO - target shape: torch.Size([256])
+2025-02-28 14:54:31,592 - INFO - 
+Epoch 36 average training loss: 0.5855
+2025-02-28 14:54:38,057 - INFO - Epoch 36/50
+  Train Loss: 0.5855
+  Val Loss: 0.6582
+  RMSE: 0.8113
+  In-Range Accuracy: 4.0%
+  Trend Accuracy: 46.8%
+  High Glucose MAE: 0.9218
+  Low Glucose MAE: 0.7570
+2025-02-28 14:54:38,082 - INFO - First batch loaded successfully
+2025-02-28 14:54:38,082 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:54:38,082 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:54:38,082 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:54:38,082 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:54:38,082 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:54:38,082 - INFO - target shape: torch.Size([256])
+2025-02-28 14:55:28,289 - INFO - 
+Epoch 37 average training loss: 0.5839
+2025-02-28 14:55:34,916 - INFO - Epoch 37/50
+  Train Loss: 0.5839
+  Val Loss: 0.6642
+  RMSE: 0.8150
+  In-Range Accuracy: 3.7%
+  Trend Accuracy: 46.8%
+  High Glucose MAE: 0.9595
+  Low Glucose MAE: 0.7269
+2025-02-28 14:55:34,941 - INFO - First batch loaded successfully
+2025-02-28 14:55:34,941 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:55:34,942 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:55:34,942 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:55:34,942 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:55:34,942 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:55:34,942 - INFO - target shape: torch.Size([256])
+2025-02-28 14:56:26,622 - INFO - 
+Epoch 38 average training loss: 0.5836
+2025-02-28 14:56:32,875 - INFO - Epoch 38/50
+  Train Loss: 0.5836
+  Val Loss: 0.6517
+  RMSE: 0.8073
+  In-Range Accuracy: 4.4%
+  Trend Accuracy: 46.8%
+  High Glucose MAE: 0.8957
+  Low Glucose MAE: 0.7867
+2025-02-28 14:56:32,904 - INFO - First batch loaded successfully
+2025-02-28 14:56:32,904 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:56:32,904 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:56:32,904 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:56:32,904 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:56:32,904 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:56:32,904 - INFO - target shape: torch.Size([256])
+2025-02-28 14:57:24,067 - INFO - 
+Epoch 39 average training loss: 0.5840
+2025-02-28 14:57:30,262 - INFO - Epoch 39/50
+  Train Loss: 0.5840
+  Val Loss: 0.6629
+  RMSE: 0.8142
+  In-Range Accuracy: 4.3%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.9248
+  Low Glucose MAE: 0.7521
+2025-02-28 14:57:30,290 - INFO - First batch loaded successfully
+2025-02-28 14:57:30,290 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:57:30,290 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:57:30,290 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:57:30,290 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:57:30,290 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:57:30,290 - INFO - target shape: torch.Size([256])
+2025-02-28 14:58:20,717 - INFO - 
+Epoch 40 average training loss: 0.5831
+2025-02-28 14:58:27,132 - INFO - Epoch 40/50
+  Train Loss: 0.5831
+  Val Loss: 0.6542
+  RMSE: 0.8088
+  In-Range Accuracy: 3.9%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9416
+  Low Glucose MAE: 0.7437
+2025-02-28 14:58:27,160 - INFO - First batch loaded successfully
+2025-02-28 14:58:27,160 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:58:27,160 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:58:27,160 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:58:27,160 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:58:27,160 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:58:27,160 - INFO - target shape: torch.Size([256])
+2025-02-28 14:59:18,166 - INFO - 
+Epoch 41 average training loss: 0.5832
+2025-02-28 14:59:24,964 - INFO - Epoch 41/50
+  Train Loss: 0.5832
+  Val Loss: 0.6581
+  RMSE: 0.8112
+  In-Range Accuracy: 4.1%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9089
+  Low Glucose MAE: 0.8033
+2025-02-28 14:59:24,990 - INFO - First batch loaded successfully
+2025-02-28 14:59:24,990 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:59:24,990 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:59:24,990 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:59:24,990 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:59:24,990 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:59:24,990 - INFO - target shape: torch.Size([256])
+2025-02-28 15:00:14,660 - INFO - 
+Epoch 42 average training loss: 0.5822
+2025-02-28 15:00:20,932 - INFO - Epoch 42/50
+  Train Loss: 0.5822
+  Val Loss: 0.6570
+  RMSE: 0.8106
+  In-Range Accuracy: 4.3%
+  Trend Accuracy: 46.5%
+  High Glucose MAE: 0.9064
+  Low Glucose MAE: 0.7769
+2025-02-28 15:00:20,959 - INFO - First batch loaded successfully
+2025-02-28 15:00:20,959 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 15:00:20,959 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 15:00:20,959 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 15:00:20,959 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 15:00:20,959 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 15:00:20,959 - INFO - target shape: torch.Size([256])
+2025-02-28 15:01:10,891 - INFO - 
+Epoch 43 average training loss: 0.5826
+2025-02-28 15:01:17,067 - INFO - Epoch 43/50
+  Train Loss: 0.5826
+  Val Loss: 0.6583
+  RMSE: 0.8114
+  In-Range Accuracy: 4.5%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.8838
+  Low Glucose MAE: 0.8248
+2025-02-28 15:01:17,094 - INFO - First batch loaded successfully
+2025-02-28 15:01:17,094 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 15:01:17,094 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 15:01:17,094 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 15:01:17,094 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 15:01:17,094 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 15:01:17,094 - INFO - target shape: torch.Size([256])
+2025-02-28 15:02:07,500 - INFO - 
+Epoch 44 average training loss: 0.5813
+2025-02-28 15:02:13,431 - INFO - Epoch 44/50
+  Train Loss: 0.5813
+  Val Loss: 0.6527
+  RMSE: 0.8079
+  In-Range Accuracy: 4.1%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9276
+  Low Glucose MAE: 0.7700
+2025-02-28 15:02:13,456 - INFO - First batch loaded successfully
+2025-02-28 15:02:13,457 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 15:02:13,457 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 15:02:13,457 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 15:02:13,457 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 15:02:13,457 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 15:02:13,457 - INFO - target shape: torch.Size([256])
+2025-02-28 15:03:04,909 - INFO - 
+Epoch 45 average training loss: 0.5813
+2025-02-28 15:03:11,032 - INFO - Epoch 45/50
+  Train Loss: 0.5813
+  Val Loss: 0.6656
+  RMSE: 0.8158
+  In-Range Accuracy: 4.1%
+  Trend Accuracy: 46.5%
+  High Glucose MAE: 0.9279
+  Low Glucose MAE: 0.7644
+2025-02-28 15:03:11,058 - INFO - First batch loaded successfully
+2025-02-28 15:03:11,058 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 15:03:11,059 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 15:03:11,059 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 15:03:11,059 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 15:03:11,059 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 15:03:11,059 - INFO - target shape: torch.Size([256])
+2025-02-28 15:04:01,926 - INFO - 
+Epoch 46 average training loss: 0.5810
+2025-02-28 15:04:08,833 - INFO - Epoch 46/50
+  Train Loss: 0.5810
+  Val Loss: 0.6625
+  RMSE: 0.8139
+  In-Range Accuracy: 4.2%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9054
+  Low Glucose MAE: 0.7938
+2025-02-28 15:04:08,858 - INFO - First batch loaded successfully
+2025-02-28 15:04:08,858 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 15:04:08,858 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 15:04:08,858 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 15:04:08,858 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 15:04:08,858 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 15:04:08,858 - INFO - target shape: torch.Size([256])
+2025-02-28 15:05:00,526 - INFO - 
+Epoch 47 average training loss: 0.5806
+2025-02-28 15:05:06,683 - INFO - Epoch 47/50
+  Train Loss: 0.5806
+  Val Loss: 0.6747
+  RMSE: 0.8214
+  In-Range Accuracy: 3.7%
+  Trend Accuracy: 46.5%
+  High Glucose MAE: 0.9670
+  Low Glucose MAE: 0.7144
+2025-02-28 15:05:06,710 - INFO - First batch loaded successfully
+2025-02-28 15:05:06,711 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 15:05:06,711 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 15:05:06,711 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 15:05:06,711 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 15:05:06,711 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 15:05:06,711 - INFO - target shape: torch.Size([256])
+2025-02-28 15:05:57,652 - INFO - 
+Epoch 48 average training loss: 0.5805
+2025-02-28 15:06:04,102 - INFO - Epoch 48/50
+  Train Loss: 0.5805
+  Val Loss: 0.6618
+  RMSE: 0.8135
+  In-Range Accuracy: 4.3%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.9013
+  Low Glucose MAE: 0.8057
+2025-02-28 15:06:04,129 - INFO - First batch loaded successfully
+2025-02-28 15:06:04,129 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 15:06:04,129 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 15:06:04,129 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 15:06:04,130 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 15:06:04,130 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 15:06:04,130 - INFO - target shape: torch.Size([256])
+2025-02-28 15:06:53,025 - INFO - 
+Epoch 49 average training loss: 0.5811
+2025-02-28 15:06:59,314 - INFO - Epoch 49/50
+  Train Loss: 0.5811
+  Val Loss: 0.6589
+  RMSE: 0.8117
+  In-Range Accuracy: 3.7%
+  Trend Accuracy: 46.6%
+  High Glucose MAE: 0.9461
+  Low Glucose MAE: 0.7825
+2025-02-28 15:06:59,343 - INFO - First batch loaded successfully
+2025-02-28 15:06:59,343 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 15:06:59,343 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 15:06:59,343 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 15:06:59,343 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 15:06:59,343 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 15:06:59,343 - INFO - target shape: torch.Size([256])
+2025-02-28 15:07:48,268 - INFO - 
+Epoch 50 average training loss: 0.5801
+2025-02-28 15:07:54,440 - INFO - Epoch 50/50
+  Train Loss: 0.5801
+  Val Loss: 0.6586
+  RMSE: 0.8115
+  In-Range Accuracy: 3.7%
+  Trend Accuracy: 46.7%
+  High Glucose MAE: 0.9342
+  Low Glucose MAE: 0.7928
+2025-02-28 15:07:54,440 - INFO - 
+Training complete!
+2025-02-28 15:07:54,440 - INFO - Models saved in: models/run_20250228_142129
+2025-02-28 15:07:54,440 - INFO - 
+Best Model Metrics:
+2025-02-28 15:07:54,440 - INFO -   rmse: 0.8189
+2025-02-28 15:07:54,440 - INFO -   mae: 0.6078
+2025-02-28 15:07:54,440 - INFO -   in_range_%: 4.1959
+2025-02-28 15:07:54,440 - INFO -   trend_accuracy_%: 47.6444
+2025-02-28 15:07:54,440 - INFO -   high_glucose_mae: 0.9132
+2025-02-28 15:07:54,440 - INFO -   low_glucose_mae: 0.8591
+2025-02-28 15:07:54,900 - INFO - 
+Evaluating model...
+2025-02-28 15:09:15,108 - INFO - Training and evaluation complete!

@@ -1,0 +1,14 @@
+2025-02-28 16:52:42,776 - INFO - Starting model evaluation...
+2025-02-28 16:52:42,776 - INFO - Loading data from full_patient_dataset.csv
+2025-02-28 16:52:50,126 - INFO - Dataset sizes:
+2025-02-28 16:52:50,126 - INFO -   Training samples: 732226
+2025-02-28 16:52:50,126 - INFO -   Validation samples: 156905
+2025-02-28 16:52:50,126 - INFO -   Test samples: 156907
+2025-02-28 16:52:50,164 - ERROR - Error loading model: Error(s) in loading state_dict for OriginalGlucoseLSTM:
+	size mismatch for lstm.weight_ih_l0: copying a param with shape torch.Size([192, 4]) from checkpoint, the shape in current model is torch.Size([256, 4]).
+	size mismatch for lstm.weight_hh_l0: copying a param with shape torch.Size([192, 48]) from checkpoint, the shape in current model is torch.Size([256, 64]).
+	size mismatch for lstm.bias_ih_l0: copying a param with shape torch.Size([192]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for lstm.bias_hh_l0: copying a param with shape torch.Size([192]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for norm.weight: copying a param with shape torch.Size([48]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for norm.bias: copying a param with shape torch.Size([48]) from checkpoint, the shape in current model is torch.Size([64]).
+	size mismatch for fc.weight: copying a param with shape torch.Size([1, 48]) from checkpoint, the shape in current model is torch.Size([1, 64]).

@@ -1,0 +1,13 @@
+2025-02-28 15:34:28,767 - INFO - Starting model evaluation...
+2025-02-28 15:34:28,767 - INFO - Loading test data from full_patient_dataset.csv
+2025-02-28 15:34:32,789 - INFO - Successfully loaded model from models/run_20250228_124834
+2025-02-28 15:34:32,789 - INFO - Evaluating model on test set...
+2025-02-28 15:34:42,297 - INFO - 
+Test Set Metrics:
+2025-02-28 15:34:42,297 - INFO -   rmse: 0.7832
+2025-02-28 15:34:42,297 - INFO -   mae: 0.5786
+2025-02-28 15:34:42,297 - INFO -   in_range_%: 3.9995
+2025-02-28 15:34:42,297 - INFO -   trend_accuracy_%: 47.9989
+2025-02-28 15:34:42,297 - INFO -   high_glucose_mae: 0.9110
+2025-02-28 15:34:42,297 - INFO -   low_glucose_mae: 0.7731
+2025-02-28 15:34:42,297 - INFO - Evaluation complete!

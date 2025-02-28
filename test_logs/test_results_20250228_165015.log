@@ -1,0 +1,7 @@
+2025-02-28 16:50:15,480 - INFO - Starting model evaluation...
+2025-02-28 16:50:15,480 - INFO - Loading data from full_patient_dataset.csv
+2025-02-28 16:50:23,172 - INFO - Dataset sizes:
+2025-02-28 16:50:23,172 - INFO -   Training samples: 732226
+2025-02-28 16:50:23,172 - INFO -   Validation samples: 156905
+2025-02-28 16:50:23,172 - INFO -   Test samples: 156907
+2025-02-28 16:50:23,195 - ERROR - Error loading model: GlucoseLSTM.__init__() got an unexpected keyword argument 'input_size'

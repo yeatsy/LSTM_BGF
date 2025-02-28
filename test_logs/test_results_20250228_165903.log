@@ -1,0 +1,9 @@
+2025-02-28 16:59:03,806 - INFO - Starting model evaluation...
+2025-02-28 16:59:03,806 - INFO - Loading data from full_patient_dataset.csv
+2025-02-28 16:59:11,954 - INFO - Dataset sizes:
+2025-02-28 16:59:11,954 - INFO -   Training samples: 732226
+2025-02-28 16:59:11,954 - INFO -   Validation samples: 156905
+2025-02-28 16:59:11,954 - INFO -   Test samples: 156907
+2025-02-28 16:59:11,993 - ERROR - Error loading model: Error(s) in loading state_dict for OriginalGlucoseLSTM:
+	Missing key(s) in state_dict: "lstm_glucose.weight_ih_l0", "lstm_glucose.weight_hh_l0", "lstm_glucose.bias_ih_l0", "lstm_glucose.bias_hh_l0", "lstm_glucose.weight_ih_l1", "lstm_glucose.weight_hh_l1", "lstm_glucose.bias_ih_l1", "lstm_glucose.bias_hh_l1", "fc1.weight", "fc1.bias", "fc2.weight", "fc2.bias". 
+	Unexpected key(s) in state_dict: "lstm.weight_ih_l0", "lstm.weight_hh_l0", "lstm.bias_ih_l0", "lstm.bias_hh_l0", "norm.weight", "norm.bias", "fc.weight", "fc.bias". 
