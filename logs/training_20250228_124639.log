@@ -1,0 +1,39 @@
+2025-02-28 12:46:39,101 - INFO - Starting training process...
+2025-02-28 12:46:39,102 - INFO - Logs will be saved to: logs/training_20250228_124639.log
+2025-02-28 12:46:39,102 - INFO - Models will be saved to: models/run_20250228_124639
+2025-02-28 12:46:39,103 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-28 12:46:48,666 - INFO - Dataset sizes:
+2025-02-28 12:46:48,666 - INFO - Training samples: 708097
+2025-02-28 12:46:48,668 - INFO - Validation samples: 148515
+2025-02-28 12:46:48,668 - INFO - Test samples: 189426
+2025-02-28 12:46:48,807 - INFO - Using device: mps
+2025-02-28 12:46:48,808 - INFO - Training with batch size: 32
+2025-02-28 12:46:48,809 - INFO - Number of training batches: 22128
+2025-02-28 12:46:48,809 - INFO - Total training samples: 708097
+2025-02-28 12:46:48,809 - INFO - Model parameters:
+2025-02-28 12:46:48,810 - INFO - Total parameters: 10513
+2025-02-28 12:46:50,920 - INFO - First batch loaded successfully
+2025-02-28 12:46:50,920 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 12:46:50,921 - INFO - glucose shape: torch.Size([32, 48, 1])
+2025-02-28 12:46:50,921 - INFO - basal shape: torch.Size([32, 48, 1])
+2025-02-28 12:46:50,921 - INFO - bolus shape: torch.Size([32, 48, 1])
+2025-02-28 12:46:50,921 - INFO - carbs shape: torch.Size([32, 48, 1])
+2025-02-28 12:46:50,921 - INFO - target shape: torch.Size([32])
+2025-02-28 12:46:50,967 - INFO - 
+Processing batch 0
+2025-02-28 12:46:50,967 - INFO - Batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 12:46:50,970 - INFO - Input glucose shape: torch.Size([32, 48, 1])
+2025-02-28 12:46:50,971 - INFO - Target shape: torch.Size([32])
+2025-02-28 12:46:51,533 - INFO - Batch 0 - Loss: 1.0712
+2025-02-28 12:46:51,534 - INFO - Output shape: torch.Size([32, 1]), Target shape: torch.Size([32, 1])
+2025-02-28 12:46:52,294 - INFO - 
+Processing batch 1
+2025-02-28 12:46:52,294 - INFO - Batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 12:46:52,301 - INFO - Batch 1 - Loss: 1.0551
+2025-02-28 12:46:52,301 - INFO - Output shape: torch.Size([32, 1]), Target shape: torch.Size([32, 1])
+2025-02-28 12:46:52,312 - INFO - Batch 2 - Loss: 1.0606
+2025-02-28 12:46:52,312 - INFO - Output shape: torch.Size([32, 1]), Target shape: torch.Size([32, 1])
+2025-02-28 12:46:52,324 - INFO - Batch 3 - Loss: 0.8023
+2025-02-28 12:46:52,325 - INFO - Output shape: torch.Size([32, 1]), Target shape: torch.Size([32, 1])
+2025-02-28 12:46:52,336 - INFO - Batch 4 - Loss: 0.7761
+2025-02-28 12:46:52,336 - INFO - Output shape: torch.Size([32, 1]), Target shape: torch.Size([32, 1])

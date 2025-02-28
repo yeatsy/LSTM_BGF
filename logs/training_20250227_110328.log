@@ -1,0 +1,18 @@
+2025-02-27 11:03:28,844 - INFO - Starting training process...
+2025-02-27 11:03:28,844 - INFO - Logs will be saved to: logs/training_20250227_110328.log
+2025-02-27 11:03:28,844 - INFO - Models will be saved to: models/run_20250227_110328
+2025-02-27 11:03:28,844 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-27 11:03:31,174 - INFO - Dataset sizes:
+2025-02-27 11:03:31,174 - INFO - Training samples: 700897
+2025-02-27 11:03:31,174 - INFO - Validation samples: 147075
+2025-02-27 11:03:31,174 - INFO - Test samples: 187746
+2025-02-27 11:03:31,174 - INFO - Initializing model...
+2025-02-27 11:03:31,208 - INFO - Using device: mps
+2025-02-27 11:03:31,208 - INFO - Number of training batches: 21904
+2025-02-27 11:03:31,208 - INFO - Number of validation batches: 4597
+2025-02-27 11:15:53,018 - INFO - Saved new best model with validation loss: 0.7104
+2025-02-27 11:15:53,022 - INFO - Epoch 1/50 - Train Loss: 0.7078 - Val Loss: 0.7104 - Best Model!
+2025-02-27 11:33:17,926 - INFO - Saved new best model with validation loss: 0.7079
+2025-02-27 11:33:17,929 - INFO - Epoch 2/50 - Train Loss: 0.7025 - Val Loss: 0.7079 - Best Model!
+2025-02-27 11:38:14,976 - ERROR - Error in training batch 13700: MPS backend out of memory (MPS allocated: 64.00 MB, other allocations: 18.07 GB, max allowed: 18.13 GB). Tried to allocate 9.00 MB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+2025-02-27 11:38:14,985 - ERROR - Training error: MPS backend out of memory (MPS allocated: 64.00 MB, other allocations: 18.07 GB, max allowed: 18.13 GB). Tried to allocate 9.00 MB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).

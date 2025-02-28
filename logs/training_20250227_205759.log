@@ -1,0 +1,67 @@
+2025-02-27 20:57:59,076 - INFO - Starting training process...
+2025-02-27 20:57:59,076 - INFO - Logs will be saved to: logs/training_20250227_205759.log
+2025-02-27 20:57:59,076 - INFO - Models will be saved to: models/run_20250227_205759
+2025-02-27 20:57:59,077 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-27 20:58:01,657 - INFO - Dataset sizes:
+2025-02-27 20:58:01,657 - INFO - Training samples: 708097
+2025-02-27 20:58:01,657 - INFO - Validation samples: 148515
+2025-02-27 20:58:01,657 - INFO - Test samples: 189426
+2025-02-27 20:58:01,657 - INFO - Initializing model...
+2025-02-27 20:58:01,689 - INFO - Using device: mps
+2025-02-27 20:58:01,689 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-27 20:59:22,515 - INFO - New best model with validation loss: 0.6506
+2025-02-27 20:59:22,515 - INFO - Validation Metrics:
+2025-02-27 20:59:22,515 - INFO -   rmse: 0.8066
+2025-02-27 20:59:22,515 - INFO -   mae: 0.5930
+2025-02-27 20:59:22,515 - INFO -   mape: 209.8141
+2025-02-27 20:59:22,515 - INFO -   bias: 0.0183
+2025-02-27 20:59:22,515 - INFO -   large_errors_%: 6.7336
+2025-02-27 20:59:22,541 - INFO - Saved new best model with validation loss: 0.6506
+2025-02-27 20:59:22,549 - INFO - Epoch 1/50
+  Train Loss: 0.6481
+  Val Loss: 0.6506
+  RMSE: 0.8066
+  MAE: 0.5930
+  MAPE: 209.81%
+  Prediction Bias: 0.0183
+  Large Errors: 6.7% - Best Model!
+2025-02-27 21:00:42,530 - INFO - Epoch 2/50
+  Train Loss: 0.6209
+  Val Loss: 0.6538
+  RMSE: 0.8086
+  MAE: 0.5917
+  MAPE: 240.46%
+  Prediction Bias: 0.0341
+  Large Errors: 6.9%
+2025-02-27 21:02:00,133 - INFO - Epoch 3/50
+  Train Loss: 0.6138
+  Val Loss: 0.6558
+  RMSE: 0.8098
+  MAE: 0.5916
+  MAPE: 236.14%
+  Prediction Bias: -0.0511
+  Large Errors: 7.0%
+2025-02-27 21:03:20,679 - INFO - Epoch 4/50
+  Train Loss: 0.6094
+  Val Loss: 0.6542
+  RMSE: 0.8088
+  MAE: 0.5885
+  MAPE: 232.49%
+  Prediction Bias: 0.0022
+  Large Errors: 6.8%
+2025-02-27 21:04:50,815 - INFO - Epoch 5/50
+  Train Loss: 0.5935
+  Val Loss: 0.6553
+  RMSE: 0.8095
+  MAE: 0.5920
+  MAPE: 218.03%
+  Prediction Bias: 0.0615
+  Large Errors: 6.6%
+2025-02-27 21:06:21,725 - INFO - Epoch 6/50
+  Train Loss: 0.5859
+  Val Loss: 0.6517
+  RMSE: 0.8073
+  MAE: 0.5899
+  MAPE: 220.13%
+  Prediction Bias: 0.0313
+  Large Errors: 6.6%

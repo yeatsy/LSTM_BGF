@@ -1,0 +1,114 @@
+2025-02-28 12:48:34,652 - INFO - Starting training process...
+2025-02-28 12:48:34,652 - INFO - Logs will be saved to: logs/training_20250228_124834.log
+2025-02-28 12:48:34,652 - INFO - Models will be saved to: models/run_20250228_124834
+2025-02-28 12:48:34,652 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-28 12:48:45,384 - INFO - Dataset sizes:
+2025-02-28 12:48:45,385 - INFO - Training samples: 708097
+2025-02-28 12:48:45,386 - INFO - Validation samples: 148515
+2025-02-28 12:48:45,386 - INFO - Test samples: 189426
+2025-02-28 12:48:45,512 - INFO - Using device: mps
+2025-02-28 12:48:45,514 - INFO - Training with batch size: 256
+2025-02-28 12:48:45,514 - INFO - Number of training batches: 2766
+2025-02-28 12:48:45,515 - INFO - Total training samples: 708097
+2025-02-28 12:48:45,515 - INFO - Model parameters:
+2025-02-28 12:48:45,516 - INFO - Total parameters: 10513
+2025-02-28 12:48:47,845 - INFO - First batch loaded successfully
+2025-02-28 12:48:47,846 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 12:48:47,847 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 12:48:47,847 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 12:48:47,847 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 12:48:47,847 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 12:48:47,847 - INFO - target shape: torch.Size([256])
+2025-02-28 12:48:48,012 - INFO - 
+Processing batch 0
+2025-02-28 12:48:48,012 - INFO - Batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 12:48:48,017 - INFO - Input glucose shape: torch.Size([256, 48, 1])
+2025-02-28 12:48:48,017 - INFO - Target shape: torch.Size([256])
+2025-02-28 12:48:48,876 - INFO - Batch 0 - Loss: 0.8812
+2025-02-28 12:48:48,876 - INFO - Output shape: torch.Size([256, 1]), Target shape: torch.Size([256, 1])
+2025-02-28 12:48:49,204 - INFO - 
+Processing batch 1
+2025-02-28 12:48:49,204 - INFO - Batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 12:48:49,235 - INFO - Batch 1 - Loss: 1.1659
+2025-02-28 12:48:49,235 - INFO - Output shape: torch.Size([256, 1]), Target shape: torch.Size([256, 1])
+2025-02-28 12:48:49,336 - INFO - Batch 2 - Loss: 0.8950
+2025-02-28 12:48:49,336 - INFO - Output shape: torch.Size([256, 1]), Target shape: torch.Size([256, 1])
+2025-02-28 12:48:49,455 - INFO - Batch 3 - Loss: 0.9349
+2025-02-28 12:48:49,455 - INFO - Output shape: torch.Size([256, 1]), Target shape: torch.Size([256, 1])
+2025-02-28 12:48:49,567 - INFO - Batch 4 - Loss: 0.8038
+2025-02-28 12:48:49,567 - INFO - Output shape: torch.Size([256, 1]), Target shape: torch.Size([256, 1])
+2025-02-28 12:53:26,018 - INFO - 
+Epoch 1 average training loss: 0.6958
+2025-02-28 12:54:40,027 - INFO - New best model with validation loss: 0.6747
+2025-02-28 12:54:40,028 - INFO - Validation Metrics:
+2025-02-28 12:54:40,029 - INFO -   rmse: 0.8214
+2025-02-28 12:54:40,030 - INFO -   mae: 0.6089
+2025-02-28 12:54:40,031 - INFO -   mape: 190.4353
+2025-02-28 12:54:40,031 - INFO -   bias: -0.0166
+2025-02-28 12:54:40,031 - INFO -   large_errors_%: 7.1612
+2025-02-28 12:54:40,097 - INFO - Saved new best model with validation loss: 0.6747
+2025-02-28 12:54:40,122 - INFO - Epoch 1/50
+  Train Loss: 0.6958
+  Val Loss: 0.6747
+  RMSE: 0.8214
+  MAE: 0.6089
+  MAPE: 190.44%
+  Prediction Bias: -0.0166
+  Large Errors: 7.2% - Best Model!
+2025-02-28 12:54:40,252 - INFO - First batch loaded successfully
+2025-02-28 12:54:40,252 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 12:54:40,252 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 12:54:40,252 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 12:54:40,252 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 12:54:40,252 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 12:54:40,252 - INFO - target shape: torch.Size([256])
+2025-02-28 13:25:51,632 - INFO - 
+Epoch 2 average training loss: 0.6585
+2025-02-28 13:50:52,053 - INFO - New best model with validation loss: 0.6704
+2025-02-28 13:50:52,053 - INFO - Validation Metrics:
+2025-02-28 13:50:52,053 - INFO -   rmse: 0.8188
+2025-02-28 13:50:52,053 - INFO -   mae: 0.6021
+2025-02-28 13:50:52,053 - INFO -   mape: 212.3518
+2025-02-28 13:50:52,053 - INFO -   bias: -0.0079
+2025-02-28 13:50:52,053 - INFO -   large_errors_%: 7.0265
+2025-02-28 13:50:52,070 - INFO - Saved new best model with validation loss: 0.6704
+2025-02-28 13:50:52,077 - INFO - Epoch 2/50
+  Train Loss: 0.6585
+  Val Loss: 0.6704
+  RMSE: 0.8188
+  MAE: 0.6021
+  MAPE: 212.35%
+  Prediction Bias: -0.0079
+  Large Errors: 7.0% - Best Model!
+2025-02-28 13:50:52,133 - INFO - First batch loaded successfully
+2025-02-28 13:50:52,134 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 13:50:52,134 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 13:50:52,134 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 13:50:52,134 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 13:50:52,134 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 13:50:52,134 - INFO - target shape: torch.Size([256])
+2025-02-28 14:11:45,240 - INFO - 
+Epoch 3 average training loss: 0.6422
+2025-02-28 14:12:13,783 - INFO - New best model with validation loss: 0.6583
+2025-02-28 14:12:13,784 - INFO - Validation Metrics:
+2025-02-28 14:12:13,784 - INFO -   rmse: 0.8114
+2025-02-28 14:12:13,785 - INFO -   mae: 0.6020
+2025-02-28 14:12:13,786 - INFO -   mape: 181.6521
+2025-02-28 14:12:13,786 - INFO -   bias: -0.0118
+2025-02-28 14:12:13,787 - INFO -   large_errors_%: 6.7895
+2025-02-28 14:12:13,858 - INFO - Saved new best model with validation loss: 0.6583
+2025-02-28 14:12:13,891 - INFO - Epoch 3/50
+  Train Loss: 0.6422
+  Val Loss: 0.6583
+  RMSE: 0.8114
+  MAE: 0.6020
+  MAPE: 181.65%
+  Prediction Bias: -0.0118
+  Large Errors: 6.8% - Best Model!
+2025-02-28 14:12:13,966 - INFO - First batch loaded successfully
+2025-02-28 14:12:13,966 - INFO - First batch keys: dict_keys(['glucose', 'basal', 'bolus', 'carbs', 'target'])
+2025-02-28 14:12:13,966 - INFO - glucose shape: torch.Size([256, 48, 1])
+2025-02-28 14:12:13,966 - INFO - basal shape: torch.Size([256, 48, 1])
+2025-02-28 14:12:13,966 - INFO - bolus shape: torch.Size([256, 48, 1])
+2025-02-28 14:12:13,966 - INFO - carbs shape: torch.Size([256, 48, 1])
+2025-02-28 14:12:13,966 - INFO - target shape: torch.Size([256])

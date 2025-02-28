@@ -1,0 +1,10 @@
+[
+  {
+    "hidden_size": 32,
+    "learning_rate": 0.001,
+    "weight_decay": 0.01,
+    "dropout1_rate": 0.2,
+    "dropout2_rate": 0.1,
+    "best_val_loss": 0.6660698160914511,
+    "final_metrics": {
+      "rmse": 

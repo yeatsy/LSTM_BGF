@@ -1,0 +1,193 @@
+2025-02-28 09:34:48,414 - INFO - Starting training process...
+2025-02-28 09:34:48,415 - INFO - Logs will be saved to: logs/training_20250228_093448.log
+2025-02-28 09:34:48,415 - INFO - Models will be saved to: models/run_20250228_093448
+2025-02-28 09:34:48,415 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-28 09:34:51,796 - INFO - Dataset sizes:
+2025-02-28 09:34:51,796 - INFO - Training samples: 708097
+2025-02-28 09:34:51,796 - INFO - Validation samples: 148515
+2025-02-28 09:34:51,797 - INFO - Test samples: 189426
+2025-02-28 09:34:51,797 - INFO - Starting hyperparameter search...
+2025-02-28 09:34:51,838 - INFO - Using device: mps
+2025-02-28 09:34:51,838 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-28 09:36:11,957 - INFO - New best model with validation loss: 0.6854
+2025-02-28 09:36:11,958 - INFO - Validation Metrics:
+2025-02-28 09:36:11,958 - INFO -   rmse: 0.8279
+2025-02-28 09:36:11,958 - INFO -   mae: 0.6145
+2025-02-28 09:36:11,958 - INFO -   mape: 192.9452
+2025-02-28 09:36:11,958 - INFO -   bias: -0.0337
+2025-02-28 09:36:11,958 - INFO -   large_errors_%: 7.3801
+2025-02-28 09:36:11,985 - INFO - Saved new best model with validation loss: 0.6854
+2025-02-28 09:36:11,993 - INFO - Epoch 1/10
+  Train Loss: 0.7040
+  Val Loss: 0.6854
+  RMSE: 0.8279
+  MAE: 0.6145
+  MAPE: 192.95%
+  Prediction Bias: -0.0337
+  Large Errors: 7.4% - Best Model!
+2025-02-28 09:37:32,526 - INFO - New best model with validation loss: 0.6710
+2025-02-28 09:37:32,528 - INFO - Validation Metrics:
+2025-02-28 09:37:32,528 - INFO -   rmse: 0.8191
+2025-02-28 09:37:32,528 - INFO -   mae: 0.6062
+2025-02-28 09:37:32,528 - INFO -   mape: 195.2995
+2025-02-28 09:37:32,528 - INFO -   bias: -0.0439
+2025-02-28 09:37:32,528 - INFO -   large_errors_%: 7.2400
+2025-02-28 09:37:32,547 - INFO - Saved new best model with validation loss: 0.6710
+2025-02-28 09:37:32,554 - INFO - Epoch 2/10
+  Train Loss: 0.6696
+  Val Loss: 0.6710
+  RMSE: 0.8191
+  MAE: 0.6062
+  MAPE: 195.30%
+  Prediction Bias: -0.0439
+  Large Errors: 7.2% - Best Model!
+2025-02-28 09:38:50,518 - INFO - New best model with validation loss: 0.6686
+2025-02-28 09:38:50,519 - INFO - Validation Metrics:
+2025-02-28 09:38:50,519 - INFO -   rmse: 0.8177
+2025-02-28 09:38:50,519 - INFO -   mae: 0.6029
+2025-02-28 09:38:50,519 - INFO -   mape: 209.4011
+2025-02-28 09:38:50,519 - INFO -   bias: -0.0519
+2025-02-28 09:38:50,519 - INFO -   large_errors_%: 7.1794
+2025-02-28 09:38:50,541 - INFO - Saved new best model with validation loss: 0.6686
+2025-02-28 09:38:50,547 - INFO - Epoch 3/10
+  Train Loss: 0.6554
+  Val Loss: 0.6686
+  RMSE: 0.8177
+  MAE: 0.6029
+  MAPE: 209.40%
+  Prediction Bias: -0.0519
+  Large Errors: 7.2% - Best Model!
+2025-02-28 09:38:50,547 - INFO - Early stopping triggered after 3 epochs
+2025-02-28 09:38:50,547 - INFO - 
+Tried parameters:
+2025-02-28 09:38:50,547 - INFO -   Hidden Size: 32
+2025-02-28 09:38:50,547 - INFO -   Learning Rate: 0.001
+2025-02-28 09:38:50,547 - INFO -   Weight Decay: 0.01
+2025-02-28 09:38:50,547 - INFO -   Dropout Rates: (0.2, 0.1)
+2025-02-28 09:38:50,547 - INFO -   Best Val Loss: 0.6686
+2025-02-28 09:38:50,549 - INFO - Using device: mps
+2025-02-28 09:38:50,549 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-28 09:40:19,200 - INFO - New best model with validation loss: 0.7185
+2025-02-28 09:40:19,201 - INFO - Validation Metrics:
+2025-02-28 09:40:19,201 - INFO -   rmse: 0.8476
+2025-02-28 09:40:19,201 - INFO -   mae: 0.6288
+2025-02-28 09:40:19,201 - INFO -   mape: 203.2680
+2025-02-28 09:40:19,201 - INFO -   bias: -0.1161
+2025-02-28 09:40:19,201 - INFO -   large_errors_%: 8.1567
+2025-02-28 09:40:19,223 - INFO - Saved new best model with validation loss: 0.7185
+2025-02-28 09:40:19,232 - INFO - Epoch 1/10
+  Train Loss: 0.7191
+  Val Loss: 0.7185
+  RMSE: 0.8476
+  MAE: 0.6288
+  MAPE: 203.27%
+  Prediction Bias: -0.1161
+  Large Errors: 8.2% - Best Model!
+2025-02-28 10:01:02,513 - INFO - New best model with validation loss: 0.6908
+2025-02-28 10:01:02,513 - INFO - Validation Metrics:
+2025-02-28 10:01:02,513 - INFO -   rmse: 0.8311
+2025-02-28 10:01:02,513 - INFO -   mae: 0.6167
+2025-02-28 10:01:02,513 - INFO -   mape: 196.2706
+2025-02-28 10:01:02,513 - INFO -   bias: -0.0516
+2025-02-28 10:01:02,513 - INFO -   large_errors_%: 7.5963
+2025-02-28 10:01:02,530 - INFO - Saved new best model with validation loss: 0.6908
+2025-02-28 10:01:02,537 - INFO - Epoch 2/10
+  Train Loss: 0.6845
+  Val Loss: 0.6908
+  RMSE: 0.8311
+  MAE: 0.6167
+  MAPE: 196.27%
+  Prediction Bias: -0.0516
+  Large Errors: 7.6% - Best Model!
+2025-02-28 10:03:44,921 - INFO - New best model with validation loss: 0.6804
+2025-02-28 10:03:44,921 - INFO - Validation Metrics:
+2025-02-28 10:03:44,921 - INFO -   rmse: 0.8249
+2025-02-28 10:03:44,922 - INFO -   mae: 0.6110
+2025-02-28 10:03:44,922 - INFO -   mape: 194.1871
+2025-02-28 10:03:44,922 - INFO -   bias: -0.0446
+2025-02-28 10:03:44,922 - INFO -   large_errors_%: 7.2986
+2025-02-28 10:03:44,935 - INFO - Saved new best model with validation loss: 0.6804
+2025-02-28 10:03:44,941 - INFO - Epoch 3/10
+  Train Loss: 0.6709
+  Val Loss: 0.6804
+  RMSE: 0.8249
+  MAE: 0.6110
+  MAPE: 194.19%
+  Prediction Bias: -0.0446
+  Large Errors: 7.3% - Best Model!
+2025-02-28 10:03:44,941 - INFO - Early stopping triggered after 3 epochs
+2025-02-28 10:03:44,941 - INFO - 
+Tried parameters:
+2025-02-28 10:03:44,942 - INFO -   Hidden Size: 32
+2025-02-28 10:03:44,942 - INFO -   Learning Rate: 0.001
+2025-02-28 10:03:44,942 - INFO -   Weight Decay: 0.01
+2025-02-28 10:03:44,942 - INFO -   Dropout Rates: (0.3, 0.2)
+2025-02-28 10:03:44,942 - INFO -   Best Val Loss: 0.6804
+2025-02-28 10:03:44,943 - INFO - Using device: mps
+2025-02-28 10:03:44,943 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-28 10:04:53,407 - INFO - New best model with validation loss: 0.7186
+2025-02-28 10:04:53,407 - INFO - Validation Metrics:
+2025-02-28 10:04:53,407 - INFO -   rmse: 0.8477
+2025-02-28 10:04:53,407 - INFO -   mae: 0.6298
+2025-02-28 10:04:53,407 - INFO -   mape: 192.1346
+2025-02-28 10:04:53,407 - INFO -   bias: -0.0675
+2025-02-28 10:04:53,407 - INFO -   large_errors_%: 8.0873
+2025-02-28 10:04:53,420 - INFO - Saved new best model with validation loss: 0.7186
+2025-02-28 10:04:53,425 - INFO - Epoch 1/10
+  Train Loss: 0.7361
+  Val Loss: 0.7186
+  RMSE: 0.8477
+  MAE: 0.6298
+  MAPE: 192.13%
+  Prediction Bias: -0.0675
+  Large Errors: 8.1% - Best Model!
+2025-02-28 10:06:01,368 - INFO - New best model with validation loss: 0.6990
+2025-02-28 10:06:01,371 - INFO - Validation Metrics:
+2025-02-28 10:06:01,371 - INFO -   rmse: 0.8360
+2025-02-28 10:06:01,371 - INFO -   mae: 0.6208
+2025-02-28 10:06:01,371 - INFO -   mape: 206.0965
+2025-02-28 10:06:01,371 - INFO -   bias: -0.0288
+2025-02-28 10:06:01,371 - INFO -   large_errors_%: 7.7344
+2025-02-28 10:06:01,384 - INFO - Saved new best model with validation loss: 0.6990
+2025-02-28 10:06:01,389 - INFO - Epoch 2/10
+  Train Loss: 0.6999
+  Val Loss: 0.6990
+  RMSE: 0.8360
+  MAE: 0.6208
+  MAPE: 206.10%
+  Prediction Bias: -0.0288
+  Large Errors: 7.7% - Best Model!
+2025-02-28 10:07:10,394 - INFO - Epoch 3/10
+  Train Loss: 0.6871
+  Val Loss: 0.6996
+  RMSE: 0.8364
+  MAE: 0.6236
+  MAPE: 182.27%
+  Prediction Bias: -0.0363
+  Large Errors: 7.7%
+2025-02-28 10:07:10,395 - INFO - Early stopping triggered after 3 epochs
+2025-02-28 10:07:10,395 - INFO - 
+Tried parameters:
+2025-02-28 10:07:10,395 - INFO -   Hidden Size: 32
+2025-02-28 10:07:10,395 - INFO -   Learning Rate: 0.001
+2025-02-28 10:07:10,395 - INFO -   Weight Decay: 0.01
+2025-02-28 10:07:10,395 - INFO -   Dropout Rates: (0.4, 0.3)
+2025-02-28 10:07:10,395 - INFO -   Best Val Loss: 0.6990
+2025-02-28 10:07:10,396 - INFO - Using device: mps
+2025-02-28 10:07:10,396 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-28 10:08:20,472 - INFO - New best model with validation loss: 0.6838
+2025-02-28 10:08:20,472 - INFO - Validation Metrics:
+2025-02-28 10:08:20,473 - INFO -   rmse: 0.8269
+2025-02-28 10:08:20,473 - INFO -   mae: 0.6092
+2025-02-28 10:08:20,473 - INFO -   mape: 206.4026
+2025-02-28 10:08:20,473 - INFO -   bias: -0.0228
+2025-02-28 10:08:20,473 - INFO -   large_errors_%: 7.3498
+2025-02-28 10:08:20,486 - INFO - Saved new best model with validation loss: 0.6838
+2025-02-28 10:08:20,491 - INFO - Epoch 1/10
+  Train Loss: 0.7032
+  Val Loss: 0.6838
+  RMSE: 0.8269
+  MAE: 0.6092
+  MAPE: 206.40%
+  Prediction Bias: -0.0228
+  Large Errors: 7.3% - Best Model!

@@ -1,0 +1,126 @@
+2025-02-27 18:34:35,897 - INFO - Starting training process...
+2025-02-27 18:34:35,897 - INFO - Logs will be saved to: logs/training_20250227_183435.log
+2025-02-27 18:34:35,897 - INFO - Models will be saved to: models/run_20250227_183435
+2025-02-27 18:34:35,897 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-27 18:34:38,303 - INFO - Dataset sizes:
+2025-02-27 18:34:38,304 - INFO - Training samples: 708097
+2025-02-27 18:34:38,304 - INFO - Validation samples: 148515
+2025-02-27 18:34:38,304 - INFO - Test samples: 189426
+2025-02-27 18:34:38,304 - INFO - Initializing model...
+2025-02-27 18:34:38,322 - INFO - Using device: mps
+2025-02-27 18:34:38,322 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-27 18:43:08,084 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 18:43:35,566 - INFO - New best model with validation loss: 0.6688
+2025-02-27 18:43:35,566 - INFO - Validation Metrics:
+2025-02-27 18:43:35,566 - INFO -   rmse: 0.8178
+2025-02-27 18:43:35,566 - INFO -   mae: 0.5958
+2025-02-27 18:43:35,566 - INFO -   mape: 230.3597
+2025-02-27 18:43:35,566 - INFO -   bias: 0.0515
+2025-02-27 18:43:35,566 - INFO -   large_errors_%: 6.8114
+2025-02-27 18:43:35,590 - INFO - Saved new best model with validation loss: 0.6688
+2025-02-27 18:43:35,601 - INFO - Epoch 1/50
+  Train Loss: 0.6561
+  Val Loss: 0.6688
+  RMSE: 0.8178
+  MAE: 0.5958
+  MAPE: 230.36%
+  Prediction Bias: 0.0515
+  Large Errors: 6.8% - Best Model!
+2025-02-27 18:53:01,213 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 18:53:29,858 - INFO - New best model with validation loss: 0.6393
+2025-02-27 18:53:29,859 - INFO - Validation Metrics:
+2025-02-27 18:53:29,859 - INFO -   rmse: 0.7995
+2025-02-27 18:53:29,859 - INFO -   mae: 0.5818
+2025-02-27 18:53:29,859 - INFO -   mape: 227.8201
+2025-02-27 18:53:29,859 - INFO -   bias: -0.0211
+2025-02-27 18:53:29,859 - INFO -   large_errors_%: 6.6081
+2025-02-27 18:53:29,884 - INFO - Saved new best model with validation loss: 0.6393
+2025-02-27 18:53:29,894 - INFO - Epoch 2/50
+  Train Loss: 0.6245
+  Val Loss: 0.6393
+  RMSE: 0.7995
+  MAE: 0.5818
+  MAPE: 227.82%
+  Prediction Bias: -0.0211
+  Large Errors: 6.6% - Best Model!
+2025-02-27 19:02:53,142 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 19:03:21,861 - INFO - Epoch 3/50
+  Train Loss: 0.6153
+  Val Loss: 0.7152
+  RMSE: 0.8457
+  MAE: 0.5980
+  MAPE: 219.87%
+  Prediction Bias: 0.0450
+  Large Errors: 6.7%
+2025-02-27 19:12:42,907 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 19:13:12,833 - INFO - Epoch 4/50
+  Train Loss: 0.6105
+  Val Loss: 0.6617
+  RMSE: 0.8135
+  MAE: 0.5881
+  MAPE: 207.24%
+  Prediction Bias: 0.0067
+  Large Errors: 6.4%
+2025-02-27 19:22:36,180 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 19:23:04,734 - INFO - Epoch 5/50
+  Train Loss: 0.6063
+  Val Loss: 0.6600
+  RMSE: 0.8124
+  MAE: 0.5860
+  MAPE: 233.15%
+  Prediction Bias: 0.0070
+  Large Errors: 6.7%
+2025-02-27 19:32:27,579 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 19:32:56,418 - INFO - Epoch 6/50
+  Train Loss: 0.6049
+  Val Loss: 0.6699
+  RMSE: 0.8185
+  MAE: 0.5942
+  MAPE: 211.92%
+  Prediction Bias: -0.0242
+  Large Errors: 6.7%
+2025-02-27 19:42:18,386 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 19:42:47,221 - INFO - Epoch 7/50
+  Train Loss: 0.5882
+  Val Loss: 0.9544
+  RMSE: 0.9770
+  MAE: 0.6117
+  MAPE: 232.42%
+  Prediction Bias: 0.0288
+  Large Errors: 6.8%
+2025-02-27 19:52:25,525 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 19:52:52,972 - INFO - Epoch 8/50
+  Train Loss: 0.5812
+  Val Loss: 0.6972
+  RMSE: 0.8350
+  MAE: 0.5949
+  MAPE: 257.99%
+  Prediction Bias: 0.0497
+  Large Errors: 7.1%
+2025-02-27 20:02:33,466 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 20:03:02,338 - INFO - Epoch 9/50
+  Train Loss: 0.5775
+  Val Loss: 0.6623
+  RMSE: 0.8138
+  MAE: 0.5843
+  MAPE: 228.75%
+  Prediction Bias: 0.0236
+  Large Errors: 6.4%
+2025-02-27 20:12:43,106 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 20:13:11,830 - INFO - Epoch 10/50
+  Train Loss: 0.5730
+  Val Loss: 0.8445
+  RMSE: 0.9190
+  MAE: 0.6086
+  MAPE: 252.37%
+  Prediction Bias: 0.0452
+  Large Errors: 7.2%
+2025-02-27 20:22:52,317 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 20:23:21,005 - INFO - Epoch 11/50
+  Train Loss: 0.5558
+  Val Loss: 0.7082
+  RMSE: 0.8415
+  MAE: 0.5945
+  MAPE: 235.44%
+  Prediction Bias: 0.0436
+  Large Errors: 6.8%

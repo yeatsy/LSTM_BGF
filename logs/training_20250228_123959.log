@@ -1,0 +1,10 @@
+2025-02-28 12:39:59,558 - INFO - Starting training process...
+2025-02-28 12:39:59,558 - INFO - Logs will be saved to: logs/training_20250228_123959.log
+2025-02-28 12:39:59,558 - INFO - Models will be saved to: models/run_20250228_123959
+2025-02-28 12:39:59,558 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-28 12:40:09,273 - INFO - Dataset sizes:
+2025-02-28 12:40:09,273 - INFO - Training samples: 708097
+2025-02-28 12:40:09,273 - INFO - Validation samples: 148515
+2025-02-28 12:40:09,273 - INFO - Test samples: 189426
+2025-02-28 12:40:09,314 - INFO - Using device: mps
+2025-02-28 12:40:09,314 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead

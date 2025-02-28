@@ -1,0 +1,27 @@
+2025-02-27 21:56:38,866 - INFO - Starting training process...
+2025-02-27 21:56:38,866 - INFO - Logs will be saved to: logs/training_20250227_215638.log
+2025-02-27 21:56:38,866 - INFO - Models will be saved to: models/run_20250227_215638
+2025-02-27 21:56:38,866 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-27 21:56:42,354 - INFO - Dataset sizes:
+2025-02-27 21:56:42,354 - INFO - Training samples: 708097
+2025-02-27 21:56:42,354 - INFO - Validation samples: 148515
+2025-02-27 21:56:42,354 - INFO - Test samples: 189426
+2025-02-27 21:56:42,354 - INFO - Initializing model...
+2025-02-27 21:56:42,379 - INFO - Using device: mps
+2025-02-27 21:56:42,379 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-27 21:58:05,760 - INFO - New best model with validation loss: 0.7050
+2025-02-27 21:58:05,761 - INFO - Validation Metrics:
+2025-02-27 21:58:05,761 - INFO -   rmse: 0.8397
+2025-02-27 21:58:05,761 - INFO -   mae: 0.6229
+2025-02-27 21:58:05,761 - INFO -   mape: 194.7098
+2025-02-27 21:58:05,761 - INFO -   bias: -0.0432
+2025-02-27 21:58:05,761 - INFO -   large_errors_%: 7.7963
+2025-02-27 21:58:05,784 - INFO - Saved new best model with validation loss: 0.7050
+2025-02-27 21:58:05,791 - INFO - Epoch 1/50
+  Train Loss: 0.7256
+  Val Loss: 0.7050
+  RMSE: 0.8397
+  MAE: 0.6229
+  MAPE: 194.71%
+  Prediction Bias: -0.0432
+  Large Errors: 7.8% - Best Model!

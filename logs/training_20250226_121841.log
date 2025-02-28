@@ -10,3 +10,15 @@
 2025-02-26 12:18:43,642 - INFO - Using device: mps
 2025-02-26 12:18:43,642 - INFO - Number of training batches: 21904
 2025-02-26 12:18:43,642 - INFO - Number of validation batches: 4597
+2025-02-26 12:32:06,911 - INFO - Saved new best model with validation loss: 0.6453
+2025-02-26 12:32:06,922 - INFO - Epoch 1/50 - Train Loss: 0.6191 - Val Loss: 0.6453 - Best Model!
+2025-02-26 12:45:29,086 - INFO - Saved new best model with validation loss: 0.6447
+2025-02-26 12:45:29,103 - INFO - Epoch 2/50 - Train Loss: 0.5830 - Val Loss: 0.6447 - Best Model!
+2025-02-26 12:59:27,944 - INFO - Epoch 3/50 - Train Loss: 0.5561 - Val Loss: 0.6683
+2025-02-26 13:13:24,154 - INFO - Epoch 4/50 - Train Loss: 0.5296 - Val Loss: 0.7101
+2025-02-26 13:27:21,768 - INFO - Epoch 5/50 - Train Loss: 0.5081 - Val Loss: 0.7176
+2025-02-26 13:41:16,562 - INFO - Epoch 6/50 - Train Loss: 0.4934 - Val Loss: 0.7433
+2025-02-26 13:55:11,250 - INFO - Epoch 7/50 - Train Loss: 0.4852 - Val Loss: 0.7481
+2025-02-26 14:09:24,797 - INFO - Epoch 8/50 - Train Loss: 0.4823 - Val Loss: 0.7476
+2025-02-26 14:26:26,415 - INFO - Epoch 9/50 - Train Loss: 0.4423 - Val Loss: 0.8028
+2025-02-26 14:42:01,444 - INFO - Epoch 10/50 - Train Loss: 0.4282 - Val Loss: 0.8305

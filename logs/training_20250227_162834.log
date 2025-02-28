@@ -1,0 +1,83 @@
+2025-02-27 16:28:34,602 - INFO - Starting training process...
+2025-02-27 16:28:34,603 - INFO - Logs will be saved to: logs/training_20250227_162834.log
+2025-02-27 16:28:34,603 - INFO - Models will be saved to: models/run_20250227_162834
+2025-02-27 16:28:34,603 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-27 16:28:37,970 - INFO - Dataset sizes:
+2025-02-27 16:28:37,970 - INFO - Training samples: 708097
+2025-02-27 16:28:37,970 - INFO - Validation samples: 148515
+2025-02-27 16:28:37,970 - INFO - Test samples: 189426
+2025-02-27 16:28:37,971 - INFO - Initializing model...
+2025-02-27 16:28:37,995 - INFO - Using device: mps
+2025-02-27 16:28:37,995 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-27 16:37:17,362 - INFO - New best model with validation loss: 0.7111
+2025-02-27 16:37:17,363 - INFO - Validation Metrics:
+2025-02-27 16:37:17,363 - INFO -   rmse: 0.8433
+2025-02-27 16:37:17,363 - INFO -   mae: 0.6296
+2025-02-27 16:37:17,363 - INFO -   time_in_range_%: 94.1454
+2025-02-27 16:37:17,363 - INFO -   bias: 0.0018
+2025-02-27 16:37:17,363 - INFO -   severe_errors_%: 2.7613
+2025-02-27 16:37:17,394 - INFO - Saved new best model with validation loss: 0.7111
+2025-02-27 16:37:17,402 - INFO - Epoch 1/50
+  Train Loss: 0.7095
+  Val Loss: 0.7111
+  RMSE: 0.8433
+  MAE: 0.6296
+  Time in Range: 94.1%
+  Prediction Bias: 0.0018
+  Severe Errors: 2.8% - Best Model!
+2025-02-27 16:45:45,933 - INFO - Epoch 2/50
+  Train Loss: 0.7063
+  Val Loss: 0.7217
+  RMSE: 0.8496
+  MAE: 0.6276
+  Time in Range: 92.8%
+  Prediction Bias: -0.0172
+  Severe Errors: 3.0%
+2025-02-27 16:54:08,591 - INFO - Epoch 3/50
+  Train Loss: 0.7061
+  Val Loss: 0.7144
+  RMSE: 0.8452
+  MAE: 0.6248
+  Time in Range: 93.0%
+  Prediction Bias: -0.0068
+  Severe Errors: 2.9%
+2025-02-27 17:02:27,880 - INFO - New best model with validation loss: 0.7100
+2025-02-27 17:02:27,881 - INFO - Validation Metrics:
+2025-02-27 17:02:27,881 - INFO -   rmse: 0.8426
+2025-02-27 17:02:27,881 - INFO -   mae: 0.6269
+2025-02-27 17:02:27,881 - INFO -   time_in_range_%: 93.3569
+2025-02-27 17:02:27,881 - INFO -   bias: 0.0103
+2025-02-27 17:02:27,881 - INFO -   severe_errors_%: 2.7842
+2025-02-27 17:02:27,896 - INFO - Saved new best model with validation loss: 0.7100
+2025-02-27 17:02:27,901 - INFO - Epoch 4/50
+  Train Loss: 0.7061
+  Val Loss: 0.7100
+  RMSE: 0.8426
+  MAE: 0.6269
+  Time in Range: 93.4%
+  Prediction Bias: 0.0103
+  Severe Errors: 2.8% - Best Model!
+2025-02-27 17:08:54,852 - INFO - Epoch 5/50
+  Train Loss: 0.7057
+  Val Loss: 0.7103
+  RMSE: 0.8428
+  MAE: 0.6269
+  Time in Range: 93.7%
+  Prediction Bias: 0.0049
+  Severe Errors: 2.8%
+2025-02-27 17:15:22,676 - INFO - Epoch 6/50
+  Train Loss: 0.7060
+  Val Loss: 0.7125
+  RMSE: 0.8441
+  MAE: 0.6261
+  Time in Range: 93.3%
+  Prediction Bias: 0.0022
+  Severe Errors: 2.8%
+2025-02-27 17:22:08,340 - INFO - Epoch 7/50
+  Train Loss: 0.7058
+  Val Loss: 0.7115
+  RMSE: 0.8435
+  MAE: 0.6283
+  Time in Range: 94.2%
+  Prediction Bias: -0.0040
+  Severe Errors: 2.8%

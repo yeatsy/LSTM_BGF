@@ -1,0 +1,179 @@
+2025-02-27 21:07:59,878 - INFO - Starting training process...
+2025-02-27 21:07:59,878 - INFO - Logs will be saved to: logs/training_20250227_210759.log
+2025-02-27 21:07:59,878 - INFO - Models will be saved to: models/run_20250227_210759
+2025-02-27 21:07:59,878 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-27 21:08:03,301 - INFO - Dataset sizes:
+2025-02-27 21:08:03,301 - INFO - Training samples: 708097
+2025-02-27 21:08:03,302 - INFO - Validation samples: 148515
+2025-02-27 21:08:03,302 - INFO - Test samples: 189426
+2025-02-27 21:08:03,302 - INFO - Initializing model...
+2025-02-27 21:08:03,331 - INFO - Using device: mps
+2025-02-27 21:08:03,331 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-27 21:10:11,360 - INFO - New best model with validation loss: 0.6422
+2025-02-27 21:10:11,362 - INFO - Validation Metrics:
+2025-02-27 21:10:11,362 - INFO -   rmse: 0.8014
+2025-02-27 21:10:11,362 - INFO -   mae: 0.5876
+2025-02-27 21:10:11,362 - INFO -   mape: 225.5650
+2025-02-27 21:10:11,362 - INFO -   bias: -0.0319
+2025-02-27 21:10:11,362 - INFO -   large_errors_%: 6.8797
+2025-02-27 21:10:11,404 - INFO - Saved new best model with validation loss: 0.6422
+2025-02-27 21:10:11,419 - INFO - Epoch 1/50
+  Train Loss: 0.6478
+  Val Loss: 0.6422
+  RMSE: 0.8014
+  MAE: 0.5876
+  MAPE: 225.56%
+  Prediction Bias: -0.0319
+  Large Errors: 6.9% - Best Model!
+2025-02-27 21:12:17,728 - INFO - New best model with validation loss: 0.6292
+2025-02-27 21:12:17,729 - INFO - Validation Metrics:
+2025-02-27 21:12:17,730 - INFO -   rmse: 0.7932
+2025-02-27 21:12:17,730 - INFO -   mae: 0.5809
+2025-02-27 21:12:17,730 - INFO -   mape: 217.2003
+2025-02-27 21:12:17,730 - INFO -   bias: 0.0158
+2025-02-27 21:12:17,730 - INFO -   large_errors_%: 6.5140
+2025-02-27 21:12:17,767 - INFO - Saved new best model with validation loss: 0.6292
+2025-02-27 21:12:17,781 - INFO - Epoch 2/50
+  Train Loss: 0.6144
+  Val Loss: 0.6292
+  RMSE: 0.7932
+  MAE: 0.5809
+  MAPE: 217.20%
+  Prediction Bias: 0.0158
+  Large Errors: 6.5% - Best Model!
+2025-02-27 21:14:43,670 - INFO - Epoch 3/50
+  Train Loss: 0.6002
+  Val Loss: 0.6370
+  RMSE: 0.7981
+  MAE: 0.5843
+  MAPE: 221.26%
+  Prediction Bias: 0.0530
+  Large Errors: 6.4%
+2025-02-27 21:17:10,654 - INFO - Epoch 4/50
+  Train Loss: 0.5920
+  Val Loss: 0.6367
+  RMSE: 0.7979
+  MAE: 0.5830
+  MAPE: 237.60%
+  Prediction Bias: 0.0474
+  Large Errors: 6.4%
+2025-02-27 21:19:43,215 - INFO - Epoch 5/50
+  Train Loss: 0.5838
+  Val Loss: 0.6493
+  RMSE: 0.8058
+  MAE: 0.5845
+  MAPE: 220.15%
+  Prediction Bias: 0.0453
+  Large Errors: 6.3%
+2025-02-27 21:22:13,821 - INFO - Epoch 6/50
+  Train Loss: 0.5743
+  Val Loss: 0.6402
+  RMSE: 0.8001
+  MAE: 0.5814
+  MAPE: 228.80%
+  Prediction Bias: 0.0241
+  Large Errors: 6.3%
+2025-02-27 21:24:43,012 - INFO - Epoch 7/50
+  Train Loss: 0.5520
+  Val Loss: 0.6556
+  RMSE: 0.8097
+  MAE: 0.5835
+  MAPE: 231.85%
+  Prediction Bias: 0.0148
+  Large Errors: 6.5%
+2025-02-27 21:27:11,008 - INFO - Epoch 8/50
+  Train Loss: 0.5425
+  Val Loss: 0.6645
+  RMSE: 0.8152
+  MAE: 0.5884
+  MAPE: 228.72%
+  Prediction Bias: 0.0337
+  Large Errors: 6.6%
+2025-02-27 21:29:36,758 - INFO - Epoch 9/50
+  Train Loss: 0.5339
+  Val Loss: 0.6666
+  RMSE: 0.8165
+  MAE: 0.5887
+  MAPE: 227.18%
+  Prediction Bias: 0.0405
+  Large Errors: 6.5%
+2025-02-27 21:32:09,540 - INFO - Epoch 10/50
+  Train Loss: 0.5266
+  Val Loss: 0.6782
+  RMSE: 0.8235
+  MAE: 0.5906
+  MAPE: 238.52%
+  Prediction Bias: -0.0055
+  Large Errors: 6.7%
+2025-02-27 21:34:38,407 - INFO - Epoch 11/50
+  Train Loss: 0.5136
+  Val Loss: 0.6840
+  RMSE: 0.8271
+  MAE: 0.5924
+  MAPE: 234.43%
+  Prediction Bias: 0.0166
+  Large Errors: 6.7%
+2025-02-27 21:37:09,304 - INFO - Epoch 12/50
+  Train Loss: 0.5101
+  Val Loss: 0.6815
+  RMSE: 0.8255
+  MAE: 0.5912
+  MAPE: 229.46%
+  Prediction Bias: 0.0217
+  Large Errors: 6.7%
+2025-02-27 21:39:40,853 - INFO - Epoch 13/50
+  Train Loss: 0.5071
+  Val Loss: 0.6907
+  RMSE: 0.8311
+  MAE: 0.5936
+  MAPE: 235.04%
+  Prediction Bias: 0.0250
+  Large Errors: 6.8%
+2025-02-27 21:42:09,772 - INFO - Epoch 14/50
+  Train Loss: 0.5029
+  Val Loss: 0.6908
+  RMSE: 0.8312
+  MAE: 0.5942
+  MAPE: 231.16%
+  Prediction Bias: 0.0159
+  Large Errors: 6.8%
+2025-02-27 21:44:39,963 - INFO - Epoch 15/50
+  Train Loss: 0.4990
+  Val Loss: 0.6926
+  RMSE: 0.8322
+  MAE: 0.5950
+  MAPE: 233.29%
+  Prediction Bias: 0.0177
+  Large Errors: 6.8%
+2025-02-27 21:47:05,688 - INFO - Epoch 16/50
+  Train Loss: 0.4976
+  Val Loss: 0.6953
+  RMSE: 0.8338
+  MAE: 0.5960
+  MAPE: 233.90%
+  Prediction Bias: 0.0253
+  Large Errors: 6.8%
+2025-02-27 21:49:37,100 - INFO - Epoch 17/50
+  Train Loss: 0.4966
+  Val Loss: 0.6954
+  RMSE: 0.8339
+  MAE: 0.5959
+  MAPE: 232.80%
+  Prediction Bias: 0.0150
+  Large Errors: 6.9%
+2025-02-27 21:52:04,397 - INFO - Epoch 18/50
+  Train Loss: 0.4957
+  Val Loss: 0.6963
+  RMSE: 0.8345
+  MAE: 0.5960
+  MAPE: 230.45%
+  Prediction Bias: 0.0077
+  Large Errors: 6.9%
+2025-02-27 21:54:36,711 - INFO - Epoch 19/50
+  Train Loss: 0.4944
+  Val Loss: 0.6987
+  RMSE: 0.8359
+  MAE: 0.5970
+  MAPE: 233.15%
+  Prediction Bias: 0.0150
+  Large Errors: 6.9%

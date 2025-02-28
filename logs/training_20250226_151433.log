@@ -1,0 +1,14 @@
+2025-02-26 15:14:33,524 - INFO - Starting training process...
+2025-02-26 15:14:33,524 - INFO - Logs will be saved to: logs/training_20250226_151433.log
+2025-02-26 15:14:33,524 - INFO - Models will be saved to: models/run_20250226_151433
+2025-02-26 15:14:33,524 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-26 15:14:35,874 - INFO - Dataset sizes:
+2025-02-26 15:14:35,874 - INFO - Training samples: 700897
+2025-02-26 15:14:35,874 - INFO - Validation samples: 147075
+2025-02-26 15:14:35,874 - INFO - Test samples: 187746
+2025-02-26 15:14:35,874 - INFO - Initializing model...
+2025-02-26 15:14:35,912 - INFO - Using device: mps
+2025-02-26 15:14:35,912 - INFO - Number of training batches: 21904
+2025-02-26 15:14:35,913 - INFO - Number of validation batches: 4597
+2025-02-26 15:26:35,497 - INFO - Saved new best model with validation loss: 0.7069
+2025-02-26 15:26:35,503 - INFO - Epoch 1/50 - Train Loss: 0.7084 - Val Loss: 0.7069 - Best Model!

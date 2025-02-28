@@ -1,0 +1,21 @@
+2025-02-27 12:45:25,016 - INFO - Starting training process...
+2025-02-27 12:45:25,016 - INFO - Logs will be saved to: logs/training_20250227_124525.log
+2025-02-27 12:45:25,016 - INFO - Models will be saved to: models/run_20250227_124525
+2025-02-27 12:45:25,016 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-27 12:45:27,533 - INFO - Dataset sizes:
+2025-02-27 12:45:27,533 - INFO - Training samples: 705217
+2025-02-27 12:45:27,533 - INFO - Validation samples: 147939
+2025-02-27 12:45:27,533 - INFO - Test samples: 188754
+2025-02-27 12:45:27,533 - INFO - Initializing model...
+2025-02-27 12:45:27,552 - INFO - Using device: mps
+2025-02-27 12:54:25,327 - INFO - New best validation loss: 0.7119
+2025-02-27 12:54:25,337 - INFO - Saved new best model with validation loss: 0.7119
+2025-02-27 12:54:25,341 - INFO - Epoch 1/50 - Train Loss: 0.7095 - Val Loss: 0.7119 - Best Model!
+2025-02-27 13:03:11,456 - INFO - New best validation loss: 0.7081
+2025-02-27 13:03:11,464 - INFO - Saved new best model with validation loss: 0.7081
+2025-02-27 13:03:11,467 - INFO - Epoch 2/50 - Train Loss: 0.7066 - Val Loss: 0.7081 - Best Model!
+2025-02-27 13:41:49,970 - INFO - New best validation loss: 0.7068
+2025-02-27 13:41:49,984 - INFO - Saved new best model with validation loss: 0.7068
+2025-02-27 13:41:49,989 - INFO - Epoch 3/50 - Train Loss: 0.7062 - Val Loss: 0.7068 - Best Model!
+2025-02-27 13:54:51,169 - INFO - Epoch 4/50 - Train Loss: 0.7065 - Val Loss: 0.7213
+2025-02-27 14:57:13,022 - INFO - Epoch 5/50 - Train Loss: 0.7063 - Val Loss: 0.7089

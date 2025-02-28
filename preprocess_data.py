@@ -6,9 +6,9 @@ from sklearn.model_selection import train_test_split
 from tqdm import tqdm
 
 # Define constants
-SEQ_LEN = 288  # 24 hours at 5-minute intervals (24 * 60 / 5)
-FORECAST_HORIZON = 12  # 60 minutes ahead (60 / 5)
-BATCH_SIZE = 32
+SEQ_LEN = 48      # 4 hours of historical data (4 * 60 / 5 minutes = 48 intervals)
+FORECAST_HORIZON = 12  # 1 hour ahead prediction (60 minutes / 5 minutes = 12 intervals)
+BATCH_SIZE = 16   # Reduced from 32
 TRAIN_RATIO = 0.7
 VAL_RATIO = 0.15
 TEST_RATIO = 0.15

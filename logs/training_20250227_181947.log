@@ -1,0 +1,28 @@
+2025-02-27 18:19:47,847 - INFO - Starting training process...
+2025-02-27 18:19:47,847 - INFO - Logs will be saved to: logs/training_20250227_181947.log
+2025-02-27 18:19:47,847 - INFO - Models will be saved to: models/run_20250227_181947
+2025-02-27 18:19:47,847 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-27 18:19:50,458 - INFO - Dataset sizes:
+2025-02-27 18:19:50,458 - INFO - Training samples: 708097
+2025-02-27 18:19:50,459 - INFO - Validation samples: 148515
+2025-02-27 18:19:50,459 - INFO - Test samples: 189426
+2025-02-27 18:19:50,459 - INFO - Initializing model...
+2025-02-27 18:19:50,489 - INFO - Using device: mps
+2025-02-27 18:19:50,490 - INFO - Looking at 4.0 hours of data to predict 1.0 hours ahead
+2025-02-27 18:28:57,582 - ERROR - Error in training batch 44256: Expected more than 1 value per channel when training, got input size torch.Size([1, 64])
+2025-02-27 18:29:33,330 - INFO - New best model with validation loss: 0.6546
+2025-02-27 18:29:33,331 - INFO - Validation Metrics:
+2025-02-27 18:29:33,331 - INFO -   rmse: 0.8090
+2025-02-27 18:29:33,331 - INFO -   mae: 0.5908
+2025-02-27 18:29:33,331 - INFO -   mape: 223.9939
+2025-02-27 18:29:33,331 - INFO -   bias: -0.0094
+2025-02-27 18:29:33,331 - INFO -   large_errors_%: 6.8451
+2025-02-27 18:29:33,364 - INFO - Saved new best model with validation loss: 0.6546
+2025-02-27 18:29:33,373 - INFO - Epoch 1/50
+  Train Loss: 0.6583
+  Val Loss: 0.6546
+  RMSE: 0.8090
+  MAE: 0.5908
+  MAPE: 223.99%
+  Prediction Bias: -0.0094
+  Large Errors: 6.8% - Best Model!

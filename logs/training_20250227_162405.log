@@ -1,0 +1,10 @@
+2025-02-27 16:24:05,841 - INFO - Starting training process...
+2025-02-27 16:24:05,841 - INFO - Logs will be saved to: logs/training_20250227_162405.log
+2025-02-27 16:24:05,841 - INFO - Models will be saved to: models/run_20250227_162405
+2025-02-27 16:24:05,841 - INFO - Loading data from full_patient_dataset.csv...
+2025-02-27 16:24:09,434 - INFO - Dataset sizes:
+2025-02-27 16:24:09,434 - INFO - Training samples: 705217
+2025-02-27 16:24:09,434 - INFO - Validation samples: 147939
+2025-02-27 16:24:09,434 - INFO - Test samples: 188754
+2025-02-27 16:24:09,435 - INFO - Initializing model...
+2025-02-27 16:24:09,478 - INFO - Using device: mps

@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
-from preprocess_data import preprocess_data
+from preprocess_data import preprocess_data, SEQ_LEN, FORECAST_HORIZON
 import numpy as np
 from tqdm import tqdm
 from torch.cuda.amp import autocast, GradScaler
@@ -10,10 +10,14 @@ import logging
 import os
 from datetime import datetime
 
-# Adjusted constants for better stability
-BATCH_SIZE = 32  # Reduced batch size
-NUM_WORKERS = 0  # Disabled multiple workers initially
-PIN_MEMORY = True
+# Add at the top of the file
+os.environ['PYTORCH_MPS_HIGH_WATERMARK_RATIO'] = '0.0'  # Disable memory limit
+
+# Adjusted constants
+BATCH_SIZE = 256
+NUM_WORKERS = 0  # Set to 0 to debug data loading
+PIN_MEMORY = False  # Disable pin_memory for debugging
+MAX_GRAD_NORM = 1.0
 
 def get_device():
     """Get the best available device: MPS, CUDA, or CPU"""
@@ -25,15 +29,25 @@ def get_device():
         return torch.device("cpu")
 
 class GlucoseLSTM(nn.Module):
-    def __init__(self, input_size=4, hidden_size=128):  # Increased hidden size
+    def __init__(self, input_size=4, hidden_size=64, dropout1_rate=0.3, dropout2_rate=0.2):
         super(GlucoseLSTM, self).__init__()
+        
+        # Single LSTM layer with strong regularization
         self.lstm = nn.LSTM(
             input_size=input_size,
             hidden_size=hidden_size,
-            num_layers=2,  # Added another layer for better capacity
+            num_layers=1,
             batch_first=True,
-            dropout=0.2    # Moved dropout to LSTM
+            dropout=0.0  # No dropout between LSTM layers since we only have one
         )
+        
+        self.norm = nn.LayerNorm(hidden_size)
+        
+        # Multiple dropout layers with different rates
+        self.dropout1 = nn.Dropout(dropout1_rate)
+        self.dropout2 = nn.Dropout(dropout2_rate)
+        
+        # Simpler fully connected layers
         self.fc = nn.Linear(hidden_size, 1)
     
     def forward(self, x):
@@ -53,8 +67,19 @@ class GlucoseLSTM(nn.Module):
         combined_input[:, :, 2] = x['bolus'].squeeze(-1)
         combined_input[:, :, 3] = x['carbs'].squeeze(-1)
         
+        # Apply first dropout to input
+        combined_input = self.dropout1(combined_input)
+        
+        # LSTM layer
         lstm_out, _ = self.lstm(combined_input)
-        out = self.fc(lstm_out[:, -1, :])
+        last_output = lstm_out[:, -1, :]
+        
+        # Normalization and second dropout
+        normalized = self.norm(last_output)
+        dropped = self.dropout2(normalized)
+        
+        # Direct linear projection
+        out = self.fc(dropped)
         return out
 
 # Setup logging
@@ -109,70 +134,266 @@ def save_checkpoint(model, optimizer, epoch, train_loss, val_loss, model_dir, is
     latest_path = os.path.join(model_dir, 'latest_model.pth')
     torch.save(checkpoint, latest_path)
 
-def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.001, model_dir=None):
+def calculate_glucose_metrics(predictions, actuals):
+    """
+    Calculate metrics specific to glucose prediction accuracy
+    """
+    predictions = np.array(predictions)
+    actuals = np.array(actuals)
+    
+    # Root Mean Square Error (overall prediction accuracy)
+    rmse = np.sqrt(np.mean((predictions - actuals) ** 2))
+    
+    # Mean Absolute Error (average magnitude of errors)
+    mae = np.mean(np.abs(predictions - actuals))
+    
+    # Mean Absolute Percentage Error (relative errors)
+    mape = np.mean(np.abs((actuals - predictions) / actuals)) * 100
+    
+    # Prediction bias (systematic over/under prediction)
+    bias = np.mean(predictions - actuals)
+    
+    # Large errors (critical for glucose prediction)
+    large_errors = np.mean(np.abs(predictions - actuals) > 1.5) * 100  # >1.5 std devs
+    
+    return {
+        'rmse': rmse,
+        'mae': mae,
+        'mape': mape,
+        'bias': bias,
+        'large_errors_%': large_errors
+    }
+
+def validate_model(model, val_loader, criterion, device):
+    """
+    Perform validation with detailed metrics for 1-hour predictions
+    """
+    model.eval()
+    val_loss = 0
+    all_predictions = []
+    all_actuals = []
+    
+    with torch.no_grad():
+        for batch in val_loader:
+            batch = {k: v.to(device, dtype=torch.float32) for k, v in batch.items()}
+            outputs = model(batch)
+            target = batch['target'].view(-1, 1)
+            
+            # Calculate MSE loss
+            loss = criterion(outputs, target)
+            val_loss += loss.item()
+            
+            # Store predictions and actuals
+            all_predictions.extend(outputs.cpu().numpy())
+            all_actuals.extend(target.cpu().numpy())
+    
+    # Calculate average loss
+    val_loss /= len(val_loader)
+    
+    # Calculate detailed metrics
+    metrics = calculate_glucose_metrics(all_predictions, all_actuals)
+    
+    return val_loss, metrics
+
+def hyperparameter_search(train_loader, val_loader, model_dir):
+    """Perform grid search for hyperparameters"""
+    # Define hyperparameter grid with smaller search space
+    param_grid = {
+        'hidden_size': [32, 48],  # Reduced sizes
+        'learning_rate': [0.001, 0.0005],
+        'weight_decay': [0.01, 0.02],
+        'dropout_rates': [(0.2, 0.1), (0.3, 0.2)],
+        'batch_size': [16, 32]  # Smaller batch sizes
+    }
+    
+    results = []
+    best_val_loss = float('inf')
+    best_params = None
+    
+    logging.info("Starting hyperparameter search...")
+    
+    search_dir = os.path.join(model_dir, 'hyperparam_search')
+    os.makedirs(search_dir, exist_ok=True)
+    
+    # Grid search
+    for hidden_size in param_grid['hidden_size']:
+        for lr in param_grid['learning_rate']:
+            for wd in param_grid['weight_decay']:
+                for d1, d2 in param_grid['dropout_rates']:
+                    try:
+                        model = GlucoseLSTM(
+                            hidden_size=hidden_size,
+                            dropout1_rate=d1,
+                            dropout2_rate=d2
+                        )
+                        
+                        train_losses, val_losses, metrics = train_model(
+                            model=model,
+                            train_loader=train_loader,
+                            val_loader=val_loader,
+                            num_epochs=10,
+                            learning_rate=lr,
+                            weight_decay=wd,
+                            model_dir=search_dir,
+                            early_stopping_patience=3
+                        )
+                        
+                        best_epoch_val_loss = min(val_losses)
+                        
+                        # Convert numpy values to Python native types
+                        metrics = {k: float(v) for k, v in metrics.items()}
+                        
+                        result = {
+                            'hidden_size': hidden_size,
+                            'learning_rate': lr,
+                            'weight_decay': wd,
+                            'dropout1_rate': d1,
+                            'dropout2_rate': d2,
+                            'best_val_loss': float(best_epoch_val_loss),  # Convert to native Python float
+                            'final_metrics': metrics
+                        }
+                        results.append(result)
+                        
+                        if best_epoch_val_loss < best_val_loss:
+                            best_val_loss = best_epoch_val_loss
+                            best_params = result.copy()
+                        
+                        logging.info(f"\nTried parameters:")
+                        logging.info(f"  Hidden Size: {hidden_size}")
+                        logging.info(f"  Learning Rate: {lr}")
+                        logging.info(f"  Weight Decay: {wd}")
+                        logging.info(f"  Dropout Rates: ({d1}, {d2})")
+                        logging.info(f"  Best Val Loss: {best_epoch_val_loss:.4f}")
+                        
+                        # Clear GPU memory
+                        if torch.backends.mps.is_available():
+                            torch.mps.empty_cache()
+                        
+                    except Exception as e:
+                        logging.error(f"Error with parameters {hidden_size}, {lr}, {wd}, ({d1}, {d2}): {str(e)}")
+                        if torch.backends.mps.is_available():
+                            torch.mps.empty_cache()
+                        continue
+    
+    # Save results
+    import json
+    with open(os.path.join(search_dir, 'search_results.json'), 'w') as f:
+        json.dump(results, f, indent=2)
+    
+    logging.info("\nHyperparameter search complete!")
+    logging.info("\nBest parameters found:")
+    for k, v in best_params.items():
+        if k != 'final_metrics':  # Skip printing the full metrics
+            logging.info(f"  {k}: {v}")
+    
+    return best_params
+
+def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.0005, 
+                weight_decay=0.03, model_dir=None, early_stopping_patience=5):
     device = get_device()
     logging.info(f"Using device: {device}")
+    
+    # Add more debug logging
+    logging.info(f"Training with batch size: {train_loader.batch_size}")
     logging.info(f"Number of training batches: {len(train_loader)}")
-    logging.info(f"Number of validation batches: {len(val_loader)}")
+    logging.info(f"Total training samples: {len(train_loader.dataset)}")
+    
+    # Debug model parameters
+    logging.info("Model parameters:")
+    total_params = sum(p.numel() for p in model.parameters())
+    logging.info(f"Total parameters: {total_params}")
     
     model = model.to(device)
     criterion = nn.MSELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-        optimizer, mode='min', factor=0.5, patience=5, verbose=False
+    
+    optimizer = torch.optim.AdamW(
+        model.parameters(), 
+        lr=learning_rate, 
+        weight_decay=weight_decay
     )
     
+    # Initialize tracking variables
+    best_val_loss = float('inf')
+    best_metrics = None
     train_losses = []
     val_losses = []
-    best_val_loss = float('inf')
+    patience_counter = 0
     
     try:
         for epoch in range(num_epochs):
-            # Training phase
             model.train()
             train_loss = 0
+            batch_count = 0
+            
+            # Debug first batch before training
+            try:
+                first_batch = next(iter(train_loader))
+                logging.info("First batch loaded successfully")
+                logging.info(f"First batch keys: {first_batch.keys()}")
+                for k, v in first_batch.items():
+                    logging.info(f"{k} shape: {v.shape}")
+            except Exception as e:
+                logging.error(f"Error loading first batch: {str(e)}")
+            
             train_pbar = tqdm(train_loader, desc=f'Epoch {epoch+1}/{num_epochs} Training')
             
             for batch_idx, batch in enumerate(train_pbar):
                 try:
+                    # Debug first few batches
+                    if epoch == 0 and batch_idx < 2:
+                        logging.info(f"\nProcessing batch {batch_idx}")
+                        logging.info(f"Batch keys: {batch.keys()}")
+                    
+                    # Move batch to device
                     batch = {k: v.to(device, dtype=torch.float32) for k, v in batch.items()}
+                    
+                    # Debug inputs
+                    if epoch == 0 and batch_idx == 0:
+                        logging.info(f"Input glucose shape: {batch['glucose'].shape}")
+                        logging.info(f"Target shape: {batch['target'].shape}")
+                    
                     optimizer.zero_grad(set_to_none=True)
                     
                     outputs = model(batch)
                     target = batch['target'].view(-1, 1)
-                    loss = criterion(outputs, target)
+                    batch_loss = criterion(outputs, target)
                     
-                    loss.backward()
+                    # Debug loss calculation
+                    if epoch == 0 and batch_idx < 5:
+                        logging.info(f"Batch {batch_idx} - Loss: {batch_loss.item():.4f}")
+                        logging.info(f"Output shape: {outputs.shape}, Target shape: {target.shape}")
+                    
+                    batch_loss.backward()
+                    torch.nn.utils.clip_grad_norm_(model.parameters(), MAX_GRAD_NORM)
                     optimizer.step()
                     
-                    train_loss += loss.item()
+                    train_loss += batch_loss.item()
+                    batch_count += 1
+                    
+                    # Update progress bar every batch
+                    avg_loss = train_loss / (batch_idx + 1)
                     train_pbar.set_postfix({
-                        'batch': f'{batch_idx}/{len(train_loader)}',
-                        'loss': f'{loss.item():.4f}'
+                        'avg_loss': f'{avg_loss:.4f}',
+                        'batch': f'{batch_idx}/{len(train_loader)}'
                     })
                     
+                    # Clear memory less frequently
+                    if device.type == 'mps' and batch_idx % 100 == 0:
+                        torch.mps.empty_cache()
+                    
                 except Exception as e:
-                    logging.error(f"Error in training batch {batch_idx}: {str(e)}")
-                    raise e
+                    logging.error(f"Error in batch {batch_idx}: {str(e)}")
+                    logging.error(f"Batch keys: {batch.keys()}")
+                    import traceback
+                    logging.error(traceback.format_exc())
+                    continue
             
-            train_loss /= len(train_loader)
+            # Compute average loss for epoch
+            train_loss = train_loss / batch_count if batch_count > 0 else float('inf')
+            logging.info(f"\nEpoch {epoch+1} average training loss: {train_loss:.4f}")
             
-            # Validation phase
-            model.eval()
-            val_loss = 0
-            val_pbar = tqdm(val_loader, desc=f'Epoch {epoch+1}/{num_epochs} Validation')
-            
-            with torch.no_grad():
-                for batch in val_pbar:
-                    batch = {k: v.to(device, dtype=torch.float32) for k, v in batch.items()}
-                    outputs = model(batch)
-                    target = batch['target'].view(-1, 1)
-                    val_loss += criterion(outputs, target).item()
-            
-            val_loss /= len(val_loader)
-            
-            # Update learning rate
-            scheduler.step(val_loss)
+            # Validation phase with detailed metrics
+            val_loss, metrics = validate_model(model, val_loader, criterion, device)
             
             train_losses.append(train_loss)
             val_losses.append(val_loss)
@@ -181,6 +402,11 @@ def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.
             is_best = val_loss < best_val_loss
             if is_best:
                 best_val_loss = val_loss
+                best_metrics = metrics
+                logging.info(f"New best model with validation loss: {val_loss:.4f}")
+                logging.info("Validation Metrics:")
+                for metric, value in metrics.items():
+                    logging.info(f"  {metric}: {value:.4f}")
             
             if model_dir:
                 save_checkpoint(
@@ -189,19 +415,35 @@ def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.
                     model_dir, is_best
                 )
             
-            # Log progress
+            # Log progress with metrics
             logging.info(
-                f"Epoch {epoch+1}/{num_epochs} - "
-                f"Train Loss: {train_loss:.4f} - "
-                f"Val Loss: {val_loss:.4f}" +
-                (" - Best Model!" if is_best else "")
+                f"Epoch {epoch+1}/{num_epochs}\n"
+                f"  Train Loss: {train_loss:.4f}\n"
+                f"  Val Loss: {val_loss:.4f}\n"
+                f"  RMSE: {metrics['rmse']:.4f}\n"
+                f"  MAE: {metrics['mae']:.4f}\n"
+                f"  MAPE: {metrics['mape']:.2f}%\n"
+                f"  Prediction Bias: {metrics['bias']:.4f}\n"
+                f"  Large Errors: {metrics['large_errors_%']:.1f}%"
+                + (" - Best Model!" if is_best else "")
             )
+            
+            # Early stopping check
+            if val_loss < best_val_loss:
+                best_val_loss = val_loss
+                patience_counter = 0
+            else:
+                patience_counter += 1
+            
+            if patience_counter >= early_stopping_patience:
+                logging.info(f"Early stopping triggered after {epoch + 1} epochs")
+                break
             
     except Exception as e:
         logging.error(f"Training error: {str(e)}")
         raise e
     
-    return train_losses, val_losses
+    return train_losses, val_losses, best_metrics
 
 def plot_losses(train_losses, val_losses):
     plt.figure(figsize=(10, 6))
@@ -265,13 +507,14 @@ if __name__ == "__main__":
     logging.info(f"Validation samples: {len(val_dataset)}")
     logging.info(f"Test samples: {len(test_dataset)}")
     
-    # Create data loaders
+    # Create data loaders with consistent settings
     train_loader = DataLoader(
         train_dataset, 
         batch_size=BATCH_SIZE, 
         shuffle=True,
         num_workers=NUM_WORKERS,
-        pin_memory=PIN_MEMORY
+        pin_memory=PIN_MEMORY,
+        drop_last=True
     )
     
     val_loader = DataLoader(
@@ -279,29 +522,41 @@ if __name__ == "__main__":
         batch_size=BATCH_SIZE, 
         shuffle=False,
         num_workers=NUM_WORKERS,
-        pin_memory=PIN_MEMORY
+        pin_memory=PIN_MEMORY,
+        drop_last=True
     )
     
     test_loader = DataLoader(
         test_dataset, 
-        batch_size=BATCH_SIZE, 
+        batch_size=BATCH_SIZE * 2,
         shuffle=False,
         num_workers=NUM_WORKERS,
         pin_memory=PIN_MEMORY
     )
     
-    # Initialize and train model
-    logging.info("Initializing model...")
-    model = GlucoseLSTM()
-    train_losses, val_losses = train_model(
-        model, 
-        train_loader, 
-        val_loader,
+    # Initialize model with best parameters
+    model = GlucoseLSTM(
+        hidden_size=48,
+        dropout1_rate=0.2,
+        dropout2_rate=0.1
+    )
+    
+    # Train with best parameters and adjusted learning rate
+    train_losses, val_losses, best_metrics = train_model(
+        model=model,
+        train_loader=train_loader,
+        val_loader=val_loader,
+        num_epochs=50,
+        learning_rate=0.002,  # Increased learning rate for larger batch size
+        weight_decay=0.02,
         model_dir=model_dir
     )
     
     logging.info("\nTraining complete!")
     logging.info(f"Models saved in: {model_dir}")
+    logging.info("\nBest Model Metrics:")
+    for metric, value in best_metrics.items():
+        logging.info(f"  {metric}: {value:.4f}")
     
     # Plot and save training progress
     plt.figure(figsize=(10, 6))
