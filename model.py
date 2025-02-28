@@ -136,32 +136,43 @@ def save_checkpoint(model, optimizer, epoch, train_loss, val_loss, model_dir, is
 
 def calculate_glucose_metrics(predictions, actuals):
     """
-    Calculate metrics specific to glucose prediction accuracy
+    Calculate metrics specific to glucose prediction accuracy for 1-hour forecasts
     """
     predictions = np.array(predictions)
     actuals = np.array(actuals)
     
-    # Root Mean Square Error (overall prediction accuracy)
-    rmse = np.sqrt(np.mean((predictions - actuals) ** 2))
+    # Clarke Error Grid Analysis zones (simplified)
+    def in_clinical_error_zone(pred, actual):
+        # Returns True if prediction would lead to appropriate treatment
+        # This is a simplified version - you may want to implement full Clarke Error Grid
+        error_margin = 0.2  # 20% margin
+        return abs(pred - actual) <= actual * error_margin
     
-    # Mean Absolute Error (average magnitude of errors)
+    # Core metrics
+    rmse = np.sqrt(np.mean((predictions - actuals) ** 2))
     mae = np.mean(np.abs(predictions - actuals))
     
-    # Mean Absolute Percentage Error (relative errors)
-    mape = np.mean(np.abs((actuals - predictions) / actuals)) * 100
+    # Clinical metrics
+    in_range_accuracy = np.mean([in_clinical_error_zone(p, a) for p, a in zip(predictions, actuals)]) * 100
     
-    # Prediction bias (systematic over/under prediction)
-    bias = np.mean(predictions - actuals)
+    # Trend accuracy (direction of change)
+    pred_trends = np.diff(predictions.flatten())
+    actual_trends = np.diff(actuals.flatten())
+    trend_accuracy = np.mean(np.sign(pred_trends) == np.sign(actual_trends)) * 100
     
-    # Large errors (critical for glucose prediction)
-    large_errors = np.mean(np.abs(predictions - actuals) > 1.5) * 100  # >1.5 std devs
+    # Extreme value metrics
+    high_errors = np.mean(np.abs(predictions[actuals > np.percentile(actuals, 75)] - 
+                                actuals[actuals > np.percentile(actuals, 75)])) 
+    low_errors = np.mean(np.abs(predictions[actuals < np.percentile(actuals, 25)] - 
+                               actuals[actuals < np.percentile(actuals, 25)]))
     
     return {
         'rmse': rmse,
         'mae': mae,
-        'mape': mape,
-        'bias': bias,
-        'large_errors_%': large_errors
+        'in_range_%': in_range_accuracy,
+        'trend_accuracy_%': trend_accuracy,
+        'high_glucose_mae': high_errors,
+        'low_glucose_mae': low_errors
     }
 
 def validate_model(model, val_loader, criterion, device):
@@ -234,8 +245,7 @@ def hyperparameter_search(train_loader, val_loader, model_dir):
                             num_epochs=10,
                             learning_rate=lr,
                             weight_decay=wd,
-                            model_dir=search_dir,
-                            early_stopping_patience=3
+                            model_dir=search_dir
                         )
                         
                         best_epoch_val_loss = min(val_losses)
@@ -289,19 +299,14 @@ def hyperparameter_search(train_loader, val_loader, model_dir):
     return best_params
 
 def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.0005, 
-                weight_decay=0.03, model_dir=None, early_stopping_patience=5):
+                weight_decay=0.03, model_dir=None):
     device = get_device()
     logging.info(f"Using device: {device}")
     
-    # Add more debug logging
+    # Debug logging
     logging.info(f"Training with batch size: {train_loader.batch_size}")
     logging.info(f"Number of training batches: {len(train_loader)}")
     logging.info(f"Total training samples: {len(train_loader.dataset)}")
-    
-    # Debug model parameters
-    logging.info("Model parameters:")
-    total_params = sum(p.numel() for p in model.parameters())
-    logging.info(f"Total parameters: {total_params}")
     
     model = model.to(device)
     criterion = nn.MSELoss()
@@ -317,7 +322,6 @@ def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.
     best_metrics = None
     train_losses = []
     val_losses = []
-    patience_counter = 0
     
     try:
         for epoch in range(num_epochs):
@@ -398,46 +402,28 @@ def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.
             train_losses.append(train_loss)
             val_losses.append(val_loss)
             
-            # Save checkpoint and best model
-            is_best = val_loss < best_val_loss
+            # Save best model based on clinical metrics
+            clinical_score = (metrics['in_range_%'] + metrics['trend_accuracy_%']) / 2
+            is_best = clinical_score > best_clinical_score if 'best_clinical_score' in locals() else True
+            
             if is_best:
-                best_val_loss = val_loss
+                best_clinical_score = clinical_score
                 best_metrics = metrics
-                logging.info(f"New best model with validation loss: {val_loss:.4f}")
-                logging.info("Validation Metrics:")
-                for metric, value in metrics.items():
-                    logging.info(f"  {metric}: {value:.4f}")
+                if model_dir:
+                    save_checkpoint(model, optimizer, epoch, train_loss, val_loss, model_dir, is_best)
             
-            if model_dir:
-                save_checkpoint(
-                    model, optimizer, epoch, 
-                    train_loss, val_loss, 
-                    model_dir, is_best
-                )
-            
-            # Log progress with metrics
+            # Log progress with detailed metrics
             logging.info(
                 f"Epoch {epoch+1}/{num_epochs}\n"
                 f"  Train Loss: {train_loss:.4f}\n"
                 f"  Val Loss: {val_loss:.4f}\n"
                 f"  RMSE: {metrics['rmse']:.4f}\n"
-                f"  MAE: {metrics['mae']:.4f}\n"
-                f"  MAPE: {metrics['mape']:.2f}%\n"
-                f"  Prediction Bias: {metrics['bias']:.4f}\n"
-                f"  Large Errors: {metrics['large_errors_%']:.1f}%"
+                f"  In-Range Accuracy: {metrics['in_range_%']:.1f}%\n"
+                f"  Trend Accuracy: {metrics['trend_accuracy_%']:.1f}%\n"
+                f"  High Glucose MAE: {metrics['high_glucose_mae']:.4f}\n"
+                f"  Low Glucose MAE: {metrics['low_glucose_mae']:.4f}"
                 + (" - Best Model!" if is_best else "")
             )
-            
-            # Early stopping check
-            if val_loss < best_val_loss:
-                best_val_loss = val_loss
-                patience_counter = 0
-            else:
-                patience_counter += 1
-            
-            if patience_counter >= early_stopping_patience:
-                logging.info(f"Early stopping triggered after {epoch + 1} epochs")
-                break
             
     except Exception as e:
         logging.error(f"Training error: {str(e)}")
