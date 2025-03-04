@@ -10,6 +10,7 @@ import logging
 from datetime import datetime
 import os
 import torch.nn as nn
+from clarke_error_grid import clarke_error_grid_analysis, analyze_all_timesteps
 
 def setup_test_logging(log_dir="test_logs"):
     """Setup logging for testing"""
@@ -336,6 +337,17 @@ def plot_prediction_analysis(predictions, actuals, inputs, metrics):
     plt.savefig('test_results.png')
     plt.close()
 
+def calculate_in_range_accuracy(predictions, actuals, threshold=20):
+    """Calculate percentage of predictions within threshold of actual values"""
+    GLUCOSE_MEAN = 150
+    GLUCOSE_STD = 50
+    
+    # Convert to mg/dL
+    predictions_mgdl = predictions * GLUCOSE_STD + GLUCOSE_MEAN
+    actuals_mgdl = actuals * GLUCOSE_STD + GLUCOSE_MEAN
+    
+    return np.mean(np.abs(predictions_mgdl - actuals_mgdl) <= threshold) * 100
+
 def evaluate_predictions(model, test_loader):
     """Evaluate model predictions with detailed metrics"""
     device = get_device()
@@ -376,6 +388,16 @@ def evaluate_predictions(model, test_loader):
     # Calculate metrics in mg/dL
     metrics = calculate_glucose_metrics_mgdl(predictions, actuals)
     
+    # Add Clarke Error Grid Analysis (now using imported function)
+    clarke_zones = clarke_error_grid_analysis(predictions, actuals)
+    logging.info("\nClarke Error Grid Analysis:")
+    for zone, percentage in clarke_zones.items():
+        logging.info(f"  Zone {zone}: {percentage:.1f}%")
+    
+    # Add to metrics
+    for zone, percentage in clarke_zones.items():
+        metrics[f'clarke_{zone}_%'] = percentage
+    
     # Log detailed metrics
     logging.info("\nDetailed Test Set Metrics (in mg/dL):")
     for metric, value in metrics.items():
@@ -383,6 +405,146 @@ def evaluate_predictions(model, test_loader):
     
     # Plot analysis
     plot_prediction_analysis(predictions, actuals, inputs, metrics)
+    
+    return metrics
+
+def analyze_time_horizon_performance(predictions, actuals):
+    """Analyze model performance degradation over prediction horizons"""
+    metrics_by_horizon = {}
+    
+    # Calculate metrics for each 5-minute horizon
+    for i in range(predictions.shape[1]):
+        horizon_preds = predictions[:, i]
+        horizon_actuals = actuals[:, i]
+        
+        horizon_metrics = {
+            f'rmse_{(i+1)*5}min': np.sqrt(np.mean((horizon_preds - horizon_actuals) ** 2)),
+            f'mae_{(i+1)*5}min': np.mean(np.abs(horizon_preds - horizon_actuals)),
+            f'in_range_{(i+1)*5}min': calculate_in_range_accuracy(horizon_preds, horizon_actuals)
+        }
+        metrics_by_horizon.update(horizon_metrics)
+    
+    # Plot degradation over time
+    plt.figure(figsize=(12, 6))
+    rmse_values = [metrics_by_horizon[f'rmse_{(i+1)*5}min'] for i in range(predictions.shape[1])]
+    plt.plot(range(5, 65, 5), rmse_values, marker='o')
+    plt.title('Prediction Error by Time Horizon')
+    plt.xlabel('Minutes into Future')
+    plt.ylabel('RMSE')
+    plt.grid(True)
+    plt.savefig('time_horizon_analysis.png')
+    
+    return metrics_by_horizon
+
+def compare_with_baselines(model, test_loader):
+    """Compare LSTM with simpler baseline models"""
+    device = get_device()
+    all_inputs = []
+    all_targets = []
+    lstm_predictions = []
+    
+    with torch.no_grad():
+        for batch in test_loader:
+            batch = {k: v.to(device) for k, v in batch.items()}
+            lstm_predictions.extend(model(batch).cpu().numpy())
+            all_inputs.extend(batch['glucose'].cpu().numpy())
+            all_targets.extend(batch['target'].cpu().numpy())
+    
+    inputs = np.array(all_inputs)
+    targets = np.array(all_targets)
+    lstm_predictions = np.array(lstm_predictions)
+    
+    # Baseline 1: Last value prediction (persistence model)
+    last_value_preds = np.repeat(inputs[:, -1, 0].reshape(-1, 1), targets.shape[1], axis=1)
+    
+    # Baseline 2: Linear extrapolation
+    slopes = (inputs[:, -1, 0] - inputs[:, -2, 0]).reshape(-1, 1)
+    steps = np.arange(1, targets.shape[1] + 1).reshape(1, -1)
+    linear_preds = inputs[:, -1, 0].reshape(-1, 1) + slopes * steps
+    
+    # Calculate metrics for each baseline
+    baseline_metrics = {
+        'lstm_model': calculate_glucose_metrics_mgdl(lstm_predictions, targets),
+        'last_value': calculate_glucose_metrics_mgdl(last_value_preds, targets),
+        'linear_extrapolation': calculate_glucose_metrics_mgdl(linear_preds, targets)
+    }
+    
+    return baseline_metrics
+
+def analyze_personalized_performance(predictions, actuals, patient_ids):
+    """Analyze model performance per patient"""
+    unique_patients = np.unique(patient_ids)
+    patient_metrics = {}
+    
+    for patient in unique_patients:
+        patient_mask = patient_ids == patient
+        patient_preds = predictions[patient_mask]
+        patient_actuals = actuals[patient_mask]
+        
+        if len(patient_preds) > 0:
+            metrics = calculate_glucose_metrics_mgdl(patient_preds, patient_actuals)
+            patient_metrics[patient] = metrics
+    
+    # Find patients with worst/best performance
+    patient_rmse = {p: m['rmse_mgdl'] for p, m in patient_metrics.items()}
+    best_patients = sorted(patient_rmse.items(), key=lambda x: x[1])[:5]
+    worst_patients = sorted(patient_rmse.items(), key=lambda x: x[1], reverse=True)[:5]
+    
+    return patient_metrics, best_patients, worst_patients
+
+def collect_predictions(model, test_loader):
+    """Collect all predictions, actuals and inputs from test loader"""
+    device = get_device()
+    all_predictions = []
+    all_actuals = []
+    all_inputs = []
+    
+    with torch.no_grad():
+        for batch in test_loader:
+            batch = {k: v.to(device) for k, v in batch.items()}
+            predictions = model(batch)
+            all_predictions.extend(predictions.cpu().numpy())
+            all_actuals.extend(batch['target'].cpu().numpy())
+            all_inputs.extend(batch['glucose'].cpu().numpy())
+    
+    return (np.array(all_predictions), 
+            np.array(all_actuals), 
+            np.array(all_inputs))
+
+def evaluate_by_glucose_range(predictions, actuals):
+    """Evaluate model performance stratified by glucose ranges"""
+    GLUCOSE_MEAN = 150
+    GLUCOSE_STD = 50
+    
+    # Convert to mg/dL
+    predictions_mgdl = predictions * GLUCOSE_STD + GLUCOSE_MEAN
+    actuals_mgdl = actuals * GLUCOSE_STD + GLUCOSE_MEAN
+    
+    # Define ranges
+    ranges = {
+        'Hypoglycemia (<70 mg/dL)': (0, 70),
+        'Target Range (70-180 mg/dL)': (70, 180),
+        'Hyperglycemia (>180 mg/dL)': (180, float('inf'))
+    }
+    
+    metrics = {}
+    for range_name, (min_val, max_val) in ranges.items():
+        mask = (actuals_mgdl >= min_val) & (actuals_mgdl < max_val)
+        if not np.any(mask):
+            continue
+            
+        range_preds = predictions_mgdl[mask]
+        range_actuals = actuals_mgdl[mask]
+        
+        metrics[range_name] = {
+            'count': np.sum(mask),
+            'rmse': np.sqrt(np.mean((range_preds - range_actuals) ** 2)),
+            'mae': np.mean(np.abs(range_preds - range_actuals)),
+            'in_range_%': calculate_in_range_accuracy(
+                (range_preds - GLUCOSE_MEAN) / GLUCOSE_STD,
+                (range_actuals - GLUCOSE_MEAN) / GLUCOSE_STD
+            )
+        }
     
     return metrics
 
@@ -396,8 +558,8 @@ if __name__ == "__main__":
     logging.info(f"Loading data from {file_path}")
     train_dataset, val_dataset, test_dataset = preprocess_data(
         file_path,
-        train_ratio=0.7,  # Same as model.py
-        val_ratio=0.15    # Same as model.py
+        train_ratio=0.7,
+        val_ratio=0.15
     )
     
     # Log dataset sizes to verify split
@@ -409,14 +571,14 @@ if __name__ == "__main__":
     # Create test loader with same batch size as training
     test_loader = DataLoader(
         test_dataset,
-        batch_size=256,  # Same as training
+        batch_size=256,
         shuffle=False,
         num_workers=0,
         pin_memory=False
     )
     
     # Load best model from the specified directory
-    model_dir = "models/run_20250228_155402"  # Updated to latest model directory
+    model_dir = "models/run_20250228_155402"  # Update with your model directory
     try:
         model = load_best_model(model_dir)
         logging.info(f"Successfully loaded model from {model_dir}")
@@ -424,12 +586,81 @@ if __name__ == "__main__":
         logging.error(f"Error loading model: {str(e)}")
         raise
     
-    # Evaluate model on test set only
-    logging.info("Evaluating model on test set...")
+    # 1. Run standard evaluation with Clarke Error Grid
+    logging.info("\n" + "="*80)
+    logging.info("Standard Evaluation with Clarke Error Grid Analysis")
+    logging.info("="*80)
     metrics = evaluate_predictions(model, test_loader)
     
-    logging.info("\nTest Set Final Metrics:")
+    logging.info("\nStandard Test Set Metrics:")
     for metric, value in metrics.items():
         logging.info(f"  {metric}: {value:.1f}")
     
-    logging.info("Evaluation complete!") 
+    # 2. Get predictions for additional analyses
+    logging.info("\n" + "="*80)
+    logging.info("Collecting predictions for additional analyses...")
+    predictions, actuals, inputs = collect_predictions(model, test_loader)
+    
+    # New: Add timestep-specific Clarke Error Grid analysis
+    logging.info("\n" + "="*80)
+    logging.info("Generating Clarke Error Grids for Each Timestep")
+    logging.info("="*80)
+    
+    # Create output directory based on model name
+    model_name = os.path.basename(model_dir)
+    clarke_output_dir = os.path.join('clarke_grids', model_name)
+    os.makedirs(clarke_output_dir, exist_ok=True)
+    
+    # Generate Clarke Error Grids for each of the 12 timesteps
+    timestep_results = analyze_all_timesteps(
+        predictions, 
+        actuals, 
+        output_dir=clarke_output_dir
+    )
+    
+    # Log the results for each timestep
+    logging.info("\nClarke Error Grid Analysis by Timestep:")
+    for result in timestep_results:
+        minutes = result['minutes']
+        logging.info(f"\n  {minutes}-Minute Predictions:")
+        for zone in ['A', 'B', 'C', 'D', 'E', 'A+B']:
+            logging.info(f"    Zone {zone}: {result[zone]:.1f}%")
+    
+    logging.info(f"\nClarke Error Grid visualizations saved to: {clarke_output_dir}")
+    logging.info(f"Summary plot saved to: {os.path.join(clarke_output_dir, 'clarke_grid_summary.png')}")
+    
+    # 3. Time horizon analysis
+    logging.info("\n" + "="*80)
+    logging.info("Time Horizon Performance Analysis")
+    logging.info("="*80)
+    horizon_metrics = analyze_time_horizon_performance(predictions, actuals)
+    
+    # 4. Baseline comparison
+    logging.info("\n" + "="*80)
+    logging.info("Baseline Model Comparison")
+    logging.info("="*80)
+    baseline_metrics = compare_with_baselines(model, test_loader)
+    
+    logging.info("\nModel Comparison:")
+    for model_name, metrics in baseline_metrics.items():
+        logging.info(f"  {model_name}:")
+        for metric, value in metrics.items():
+            logging.info(f"    {metric}: {value:.1f}")
+    
+    # 5. Glucose range stratified analysis
+    logging.info("\n" + "="*80)
+    logging.info("Stratified Analysis by Glucose Range")
+    logging.info("="*80)
+    
+    range_metrics = evaluate_by_glucose_range(predictions, actuals)
+    
+    logging.info("\nPerformance by Glucose Range:")
+    for range_name, metrics in range_metrics.items():
+        logging.info(f"  {range_name}:")
+        for metric, value in metrics.items():
+            if isinstance(value, (int, float)):
+                logging.info(f"    {metric}: {value:.1f}")
+            else:
+                logging.info(f"    {metric}: {value}")
+    
+    logging.info("\nEvaluation complete!") 
